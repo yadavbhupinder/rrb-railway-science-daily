@@ -1,0 +1,3592 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>RRB NTPC Level 6 (Station Master) — Offline DI CBT Vault</title>
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <style>
+    :root {
+      --bg-body: #0f172a;
+      --bg-panel: #1e293b;
+      --bg-surface: #ffffff;
+      --bg-muted: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --navy: #0f294a;
+      --navy-dark: #09152b;
+      --blue: #1d4ed8;
+      --blue-soft: #eff6ff;
+      --gold: #f59e0b;
+      --gold-soft: #fef3c7;
+      --green: #059669;
+      --green-soft: #ecfdf5;
+      --red: #dc2626;
+      --red-soft: #fef2f2;
+      --purple: #7c3aed;
+      --purple-soft: #f5f3ff;
+      --border: #cbd5e1;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      word-wrap: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    html, body {
+      min-height: 100vh;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      background: var(--bg-body);
+      color: #f8fafc;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Sticky Top Global Header */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      width: 100%;
+      background: linear-gradient(135deg, #09152b 0%, var(--navy) 100%);
+      color: #ffffff;
+      border-bottom: 3px solid var(--gold);
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(245, 158, 11, 0.2);
+      border: 1.5px solid var(--gold);
+      color: #fbbf24;
+      font-weight: 900;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-size: clamp(13px, 3.6vw, 15.5px);
+      font-weight: 800;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .lang-group {
+      display: inline-flex;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 2px;
+      border-radius: 7px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      gap: 2px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: #e2e8f0;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      min-height: 28px;
+      font-family: inherit;
+    }
+
+    .lang-btn.active {
+      background: #fbbf24;
+      color: #09152b;
+    }
+
+    /* Universal Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-weight: 800;
+      font-size: clamp(12px, 3.2vw, 13.5px);
+      padding: 9px 13px;
+      min-height: 40px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 1.25;
+      transition: transform 0.1s ease, opacity 0.15s ease;
+      user-select: none;
+      max-width: 100%;
+    }
+
+    .btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .btn-sm {
+      min-height: 32px;
+      padding: 5px 10px;
+      font-size: 11.5px;
+      border-radius: 6px;
+    }
+
+    .btn-lg {
+      min-height: 46px;
+      padding: 11px 18px;
+      font-size: clamp(13.5px, 3.6vw, 15px);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #fbbf24, #d97706);
+      color: #09152b;
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: #ffffff;
+    }
+
+    .btn-blue {
+      background: var(--blue);
+      color: #ffffff;
+    }
+
+    .btn-purple {
+      background: var(--purple);
+      color: #ffffff;
+    }
+
+    .btn-red-soft {
+      background: var(--red-soft);
+      color: var(--red);
+      border: 1px solid #fecaca;
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    /* Form Inputs */
+    .input-field {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-main);
+      background: #ffffff;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+    }
+
+    /* Toast Banner */
+    #toast-box {
+      position: fixed;
+      bottom: 72px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 300;
+      width: 92%;
+      max-width: 390px;
+      background: #09152b;
+      color: #ffffff;
+      border: 1px solid #334155;
+      border-left: 4px solid #fbbf24;
+      padding: 11px 15px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Screen Containers */
+    .main-wrap {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 12px 10px 28px;
+    }
+
+    .card {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      width: 100%;
+    }
+
+    /* Screen 1: Lock Screen */
+    #screen-lock {
+      min-height: calc(100vh - 52px);
+      background: radial-gradient(circle at top, #1e3a8a 0%, #09152b 75%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 12px;
+    }
+
+    .lock-card {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(30, 41, 59, 0.92);
+      border: 1.5px solid rgba(251, 191, 36, 0.4);
+      border-radius: 16px;
+      padding: 22px 18px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .lock-badge {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(245, 158, 11, 0.18);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 10px;
+    }
+
+    /* Screen 2: Dashboard */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .hero-btn {
+      border: none;
+      border-radius: var(--radius);
+      padding: 14px 12px;
+      text-align: left;
+      color: #ffffff;
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 78px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-btn-start {
+      background: linear-gradient(135deg, #059669, #047857);
+      border: 1px solid #34d399;
+    }
+
+    .hero-btn-create {
+      background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+      border: 1px solid #60a5fa;
+    }
+
+    .hero-title {
+      font-size: clamp(13.5px, 3.6vw, 16px);
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .hero-sub {
+      font-size: clamp(10.5px, 2.8vw, 12px);
+      opacity: 0.92;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    /* Scrollable Saved Tests Library Container */
+    .saved-tests-scroll-box {
+      max-height: 320px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 4px;
+      margin-top: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .saved-tests-scroll-box::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .saved-tests-scroll-box::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 6px;
+    }
+
+    .saved-tests-scroll-box::-webkit-scrollbar-thumb {
+      background: #94a3b8;
+      border-radius: 6px;
+    }
+
+    .test-item {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .test-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 6px 0 8px;
+    }
+
+    .chip {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 5px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+    }
+
+    .dash-bottom-bar {
+      background: linear-gradient(135deg, #09152b 0%, #0f294a 100%);
+      color: #ffffff;
+      border: 1px solid #334155;
+      border-radius: var(--radius);
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    .dash-bottom-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .timer-chip-btn {
+      border: 1.5px solid var(--border);
+      background: #f8fafc;
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 12px;
+      padding: 7px 6px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: center;
+    }
+
+    .timer-chip-btn.active {
+      background: var(--blue-soft);
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    /* Overall Analytics Screen Styles */
+    .overall-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .overall-kpi-card {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    .chart-card {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    .chart-title {
+      font-size: clamp(12.5px, 3.4vw, 14px);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    /* Screen 3: Live CBT Exam */
+    .exam-subbar {
+      position: sticky;
+      top: 49px;
+      z-index: 70;
+      background: #1e293b;
+      color: #ffffff;
+      padding: 7px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      border-bottom: 1px solid #334155;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .timer-pill {
+      background: #09152b;
+      border: 1.5px solid #60a5fa;
+      color: #ffffff;
+      padding: 3px 9px;
+      border-radius: 7px;
+      font-weight: 900;
+      font-size: clamp(13px, 3.6vw, 15px);
+    }
+
+    .timer-pill.warn {
+      background: #fbbf24;
+      color: #09152b;
+      border-color: #b45309;
+    }
+
+    .timer-pill.crit {
+      background: #dc2626;
+      color: #ffffff;
+      animation: pulseCrit 1s infinite;
+    }
+
+    @keyframes pulseCrit {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.75; }
+    }
+
+    .set-tabs {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .set-tab-btn {
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text-main);
+      font-size: clamp(10px, 2.7vw, 12px);
+      font-weight: 800;
+      padding: 6px 2px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .set-tab-btn.active {
+      background: var(--navy);
+      color: #fbbf24;
+      border-color: #fbbf24;
+    }
+
+    /* Mobile-Safe Fixed Tables & SVG Charts */
+    .di-box {
+      background: #f8fafc;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    table.di-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: clamp(10.5px, 2.7vw, 12.5px);
+      margin-top: 6px;
+      background: #ffffff;
+      color: var(--text-main);
+    }
+
+    table.di-table th {
+      background: var(--navy);
+      color: #ffffff;
+      padding: 6px 4px;
+      font-weight: 700;
+      border: 1px solid #334155;
+      text-align: center;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    table.di-table td {
+      padding: 6px 4px;
+      border: 1px solid #cbd5e1;
+      text-align: center;
+      font-weight: 600;
+      color: #1e293b;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    table.di-table tr:nth-child(even) td {
+      background: #f1f5f9;
+    }
+
+    .bi-sub {
+      display: block;
+      color: #475569;
+      font-weight: 600;
+      margin-top: 3px;
+      font-size: 0.93em;
+    }
+
+    .q-stem {
+      font-size: clamp(13.5px, 3.6vw, 15.5px);
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    .opt-btn {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 9px;
+      border: 2px solid #cbd5e1;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-family: inherit;
+      margin-bottom: 8px;
+      min-height: 46px;
+      color: var(--text-main);
+    }
+
+    .opt-btn.selected {
+      border-color: var(--blue);
+      background: var(--blue-soft);
+    }
+
+    .opt-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      border: 1.5px solid #94a3b8;
+      color: #334155;
+      font-weight: 800;
+      font-size: 12.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .opt-btn.selected .opt-circle {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #ffffff;
+    }
+
+    .opt-label {
+      font-size: clamp(13px, 3.4vw, 14.5px);
+      font-weight: 700;
+      color: #0f172a;
+      flex: 1;
+    }
+
+    /* Sticky 4-Column Bottom Exam Bar */
+    .exam-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-width: 100vw;
+      background: #ffffff;
+      border-top: 2px solid var(--border);
+      padding: 7px 10px;
+      z-index: 75;
+      box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    .exam-bottom-grid {
+      max-width: 920px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .exam-bottom-grid .btn {
+      width: 100%;
+      padding: 7px 4px;
+      min-height: 38px;
+      font-size: clamp(11px, 2.9vw, 13px);
+    }
+
+    /* Modals & Palette Drawer */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 21, 43, 0.82);
+      z-index: 150;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      overflow-y: auto;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 460px;
+      background: #ffffff;
+      color: var(--text-main);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-head {
+      background: var(--navy);
+      color: #ffffff;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .modal-body {
+      padding: 14px;
+      overflow-y: auto;
+    }
+
+    /* Premium pause-and-exit confirmation */
+    .pause-confirm-box {
+      max-width: 410px;
+      border-radius: 22px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 28px 80px rgba(2, 12, 35, .42);
+      animation: pauseModalIn .22s ease-out;
+    }
+    @keyframes pauseModalIn {
+      from { opacity: 0; transform: translateY(12px) scale(.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .pause-confirm-body { padding: 25px 22px 22px; }
+    .pause-confirm-icon {
+      width: 76px; height: 76px; margin: 0 auto 15px;
+      display: grid; place-items: center; border-radius: 24px;
+      font-size: 34px; color: #fff;
+      background: linear-gradient(145deg, #2563eb, #7c3aed);
+      box-shadow: 0 12px 28px rgba(59, 93, 220, .3);
+    }
+    .pause-confirm-title { font-size: 21px; font-weight: 950; color: var(--text-main); margin: 0 0 8px; }
+    .pause-confirm-copy { font-size: 13.5px; line-height: 1.65; color: var(--text-muted); margin: 0 auto 16px; max-width: 320px; }
+    .pause-save-note {
+      display: flex; align-items: center; gap: 9px; text-align: left;
+      padding: 11px 12px; margin: 0 0 19px; border-radius: 13px;
+      background: rgba(16, 185, 129, .10); border: 1px solid rgba(16, 185, 129, .22);
+      color: var(--text-main); font-size: 12px; font-weight: 800;
+    }
+    .pause-save-note span:first-child { font-size: 20px; }
+    .pause-confirm-actions { display: flex; gap: 10px; }
+    .pause-confirm-actions .btn { flex: 1; min-height: 44px; border-radius: 12px; font-weight: 900; }
+    @media (max-width: 420px) {
+      .pause-confirm-box { max-width: 100%; }
+      .pause-confirm-body { padding: 22px 17px 18px; }
+      .pause-confirm-title { font-size: 19px; }
+    }
+
+
+    .daily-science-card{margin:14px 0 18px;padding:17px;border-radius:18px;background:linear-gradient(135deg,rgba(14,165,233,.12),rgba(99,102,241,.10));border:1px solid rgba(59,130,246,.22)}
+    .daily-science-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+    .daily-science-title{font-size:17px;font-weight:950;color:var(--navy)}
+    .daily-science-sub{font-size:11.5px;color:var(--text-muted);line-height:1.55;margin-top:4px}
+    .daily-test-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .daily-test-tile{background:var(--card-bg,#fff);border:1px solid var(--border,#dbeafe);border-radius:14px;padding:12px;min-width:0}
+    .daily-test-tile h3{font-size:13px;font-weight:900;color:var(--navy);margin:0 0 5px}
+    .daily-test-tile p{font-size:11px;color:var(--text-muted);margin:0 0 10px;line-height:1.5}
+    .daily-status{font-size:10.5px;font-weight:800;padding:4px 8px;border-radius:99px;background:#dcfce7;color:#166534;white-space:nowrap}
+    .daily-source-note{font-size:10.5px;line-height:1.55;color:var(--text-muted);margin-top:11px;padding-top:10px;border-top:1px solid rgba(100,116,139,.2)}
+    @media(max-width:520px){.daily-test-grid{grid-template-columns:1fr}.daily-science-card{padding:13px}}
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .pal-cell {
+      height: 38px;
+      border-radius: 7px;
+      border: 1.5px solid #cbd5e1;
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 800;
+      font-size: 12.5px;
+      cursor: pointer;
+    }
+
+    .pal-cell.ans { background: var(--green); color: #fff; border-color: #047857; }
+    .pal-cell.not-ans { background: var(--red); color: #fff; border-color: #b91c1c; }
+    .pal-cell.rev { background: var(--purple); color: #fff; border-color: #5b21b6; }
+    .pal-cell.curr { outline: 2.5px solid #09152b; outline-offset: 1px; }
+
+    /* Scorecard KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .kpi-box {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    @media (max-width: 380px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+
+    /* ================= PREMIUM UI POLISH ================= */
+    :root {
+      --radius: 18px;
+      --radius-sm: 11px;
+      --shadow-soft: 0 12px 32px rgba(2, 8, 23, .16);
+      --shadow-card: 0 8px 24px rgba(15, 23, 42, .10);
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse at 12% 0%, rgba(37, 99, 235, .22), transparent 34%),
+        radial-gradient(ellipse at 90% 18%, rgba(124, 58, 237, .16), transparent 30%),
+        linear-gradient(145deg, #081326 0%, #101e36 52%, #0b1730 100%);
+      background-attachment: fixed;
+    }
+
+    .top-bar {
+      padding: 11px clamp(12px, 3vw, 24px);
+      background: linear-gradient(115deg, rgba(5, 15, 35, .97), rgba(18, 43, 79, .96));
+      border-bottom: 1px solid rgba(251, 191, 36, .7);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, .28);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 13px;
+      background: linear-gradient(145deg, #fbbf24, #d97706);
+      color: #111827;
+      border: 0;
+      box-shadow: 0 5px 16px rgba(245, 158, 11, .28);
+    }
+
+    .brand-title { letter-spacing: .2px; }
+    .lang-group { border-radius: 10px; padding: 3px; }
+    .lang-btn { border-radius: 8px; min-height: 31px; }
+
+    .main-wrap {
+      max-width: 1000px;
+      padding: clamp(14px, 3vw, 26px) clamp(12px, 3vw, 22px) 34px;
+    }
+
+    .card, .chart-card, .overall-kpi-card, .kpi-box {
+      border: 1px solid rgba(203, 213, 225, .78);
+      border-radius: 17px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .card { padding: clamp(14px, 2.5vw, 20px); }
+    .hero-grid { gap: 14px; margin-bottom: 16px; }
+
+    .hero-btn {
+      min-height: 116px;
+      padding: 19px;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, .22);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .hero-btn::after {
+      content: "";
+      position: absolute;
+      width: 125px;
+      height: 125px;
+      right: -28px;
+      top: -45px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 50%;
+      box-shadow: 0 0 0 16px rgba(255,255,255,.045), 0 0 0 34px rgba(255,255,255,.035);
+      z-index: -1;
+    }
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 17px 32px rgba(0, 0, 0, .28);
+      filter: saturate(1.08);
+    }
+    .hero-btn-start {
+      background: linear-gradient(135deg, #059669 0%, #047857 55%, #065f46 100%);
+      border: 1px solid rgba(110, 231, 183, .7);
+    }
+    .hero-btn-create {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 55%, #312e81 100%);
+      border: 1px solid rgba(147, 197, 253, .7);
+    }
+    .hero-title { font-size: clamp(15px, 3.8vw, 18px); letter-spacing: .1px; }
+    .hero-sub { max-width: 290px; line-height: 1.5; }
+
+    .saved-tests-scroll-box { max-height: 390px; padding: 3px 5px 3px 0; }
+    .test-item {
+      border-radius: 13px;
+      padding: 14px;
+      margin-bottom: 10px;
+      background: linear-gradient(145deg, #fff, #f8fbff);
+      border-color: #dbe5f1;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, .055);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .test-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .10);
+    }
+
+    .dash-bottom-bar {
+      border-radius: 18px;
+      padding: 17px;
+      background: linear-gradient(125deg, #08152d, #153965 70%, #312e81);
+      border: 1px solid rgba(147, 197, 253, .28);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn {
+      border-radius: 10px;
+      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+    }
+    .btn:hover:not(:disabled) {
+      filter: brightness(1.04);
+      box-shadow: 0 5px 13px rgba(15, 23, 42, .14);
+    }
+    .btn-gold { box-shadow: 0 5px 14px rgba(217, 119, 6, .2); }
+    .btn-green { box-shadow: 0 5px 14px rgba(5, 150, 105, .17); }
+
+    .lock-card {
+      border-radius: 24px;
+      padding: clamp(22px, 5vw, 32px);
+      background: linear-gradient(150deg, rgba(30, 41, 59, .97), rgba(12, 28, 54, .98));
+      border: 1px solid rgba(251, 191, 36, .55);
+      box-shadow: 0 24px 65px rgba(0, 0, 0, .48), inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(16px);
+    }
+    .lock-badge {
+      width: 66px;
+      height: 66px;
+      font-size: 29px;
+      box-shadow: 0 8px 25px rgba(245, 158, 11, .18);
+    }
+    .input-field { border-radius: 11px; min-height: 44px; }
+
+    .exam-subbar {
+      top: 60px;
+      padding: 9px clamp(8px, 2vw, 18px);
+      background: rgba(12, 27, 51, .97);
+      border-bottom: 1px solid rgba(96, 165, 250, .35);
+      backdrop-filter: blur(12px);
+    }
+    .exam-back-btn {
+      min-width: 64px;
+      background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+      border: 1px solid rgba(255,255,255,.32);
+      font-weight: 900;
+    }
+    .timer-pill {
+      border-radius: 10px;
+      padding: 5px 11px;
+      box-shadow: 0 3px 12px rgba(37, 99, 235, .18);
+    }
+    .di-box {
+      border-radius: 15px;
+      padding: 13px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, .055);
+    }
+    .q-stem { line-height: 1.65; }
+    .opt-btn {
+      border-radius: 12px;
+      padding: 12px 13px;
+      transition: border-color .16s ease, background .16s ease, transform .16s ease;
+    }
+    .opt-btn:hover { border-color: #60a5fa; transform: translateX(2px); }
+    .opt-btn.selected {
+      border-color: #2563eb;
+      background: linear-gradient(100deg, #eff6ff, #f5f3ff);
+      box-shadow: 0 3px 12px rgba(37, 99, 235, .09);
+    }
+    .exam-bottom-bar {
+      padding: 9px 12px max(9px, env(safe-area-inset-bottom));
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid #dbe5f1;
+    }
+    .exam-bottom-grid .btn { border-radius: 11px; min-height: 42px; }
+
+    .modal-box {
+      border-radius: 20px;
+      box-shadow: 0 25px 70px rgba(0,0,0,.42);
+    }
+    .modal-head {
+      padding: 15px 17px;
+      background: linear-gradient(115deg, #0b1c38, #173d6d);
+    }
+    .modal-body { padding: 17px; }
+
+    @media (max-width: 600px) {
+      .top-bar { padding: 8px 10px; }
+      .brand-icon { width: 35px; height: 35px; }
+      .hero-btn { min-height: 104px; padding: 15px; }
+      .exam-subbar { top: 51px; flex-wrap: wrap; }
+      .exam-subbar > div:last-child { gap: 4px !important; }
+      .exam-subbar .btn { padding: 6px 8px; min-height: 34px; font-size: 11px; }
+      .exam-back-btn { min-width: 56px; }
+      .main-wrap { padding-top: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+    /* =============== END PREMIUM UI POLISH =============== */
+
+    /* ================= MULTI-THEME SYSTEM ================= */
+    :root {
+      --theme-primary: #2563eb;
+      --theme-secondary: #1e3a8a;
+      --theme-accent: #fbbf24;
+      --theme-glow: rgba(37, 99, 235, .22);
+      --theme-deep: #09152b;
+      --theme-mid: #153965;
+    }
+
+    html[data-theme="emerald"] {
+      --theme-primary: #059669;
+      --theme-secondary: #065f46;
+      --theme-accent: #a7f3d0;
+      --theme-glow: rgba(16, 185, 129, .22);
+      --theme-deep: #052e2b;
+      --theme-mid: #075e55;
+    }
+    html[data-theme="violet"] {
+      --theme-primary: #7c3aed;
+      --theme-secondary: #4c1d95;
+      --theme-accent: #ddd6fe;
+      --theme-glow: rgba(139, 92, 246, .24);
+      --theme-deep: #1e1145;
+      --theme-mid: #4c287d;
+    }
+    html[data-theme="sunset"] {
+      --theme-primary: #ea580c;
+      --theme-secondary: #9a3412;
+      --theme-accent: #fed7aa;
+      --theme-glow: rgba(249, 115, 22, .22);
+      --theme-deep: #431407;
+      --theme-mid: #9a3412;
+    }
+    html[data-theme="rose"] {
+      --theme-primary: #e11d48;
+      --theme-secondary: #9f1239;
+      --theme-accent: #fecdd3;
+      --theme-glow: rgba(244, 63, 94, .2);
+      --theme-deep: #4c0519;
+      --theme-mid: #881337;
+    }
+    html[data-theme="teal"] {
+      --theme-primary: #0d9488;
+      --theme-secondary: #115e59;
+      --theme-accent: #99f6e4;
+      --theme-glow: rgba(20, 184, 166, .22);
+      --theme-deep: #042f2e;
+      --theme-mid: #115e59;
+    }
+
+    html[data-theme] body {
+      background:
+        radial-gradient(ellipse at 12% 0%, var(--theme-glow), transparent 34%),
+        radial-gradient(ellipse at 90% 18%, color-mix(in srgb, var(--theme-primary) 13%, transparent), transparent 30%),
+        linear-gradient(145deg, var(--theme-deep), #101e36 56%, #0b1730);
+    }
+    html[data-theme] .top-bar {
+      background: linear-gradient(115deg, var(--theme-deep), var(--theme-mid));
+      border-bottom-color: var(--theme-accent);
+    }
+    html[data-theme] .brand-icon {
+      background: color-mix(in srgb, var(--theme-accent) 20%, transparent);
+      border-color: var(--theme-accent);
+      color: var(--theme-accent);
+    }
+    html[data-theme] .hero-btn-start {
+      background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary));
+      border-color: color-mix(in srgb, var(--theme-accent) 55%, white);
+    }
+    html[data-theme] .hero-btn-create {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 78%, #2563eb), var(--theme-secondary));
+      border-color: color-mix(in srgb, var(--theme-accent) 48%, white);
+    }
+    html[data-theme] .dash-bottom-bar {
+      background: linear-gradient(125deg, var(--theme-deep), var(--theme-mid) 70%, var(--theme-secondary));
+      border-color: color-mix(in srgb, var(--theme-accent) 24%, transparent);
+    }
+    html[data-theme] .lock-card {
+      border-color: color-mix(in srgb, var(--theme-accent) 60%, transparent);
+    }
+    html[data-theme] .lock-badge {
+      background: color-mix(in srgb, var(--theme-primary) 20%, transparent);
+      border-color: var(--theme-accent);
+    }
+    html[data-theme] .modal-head,
+    html[data-theme] .exam-subbar {
+      background: linear-gradient(115deg, var(--theme-deep), var(--theme-mid));
+    }
+    html[data-theme] .btn-blue {
+      background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary));
+    }
+    html[data-theme] .set-tab-btn.active {
+      background: var(--theme-secondary);
+      border-color: var(--theme-accent);
+      color: var(--theme-accent);
+    }
+    html[data-theme] .opt-btn.selected {
+      border-color: var(--theme-primary);
+      background: color-mix(in srgb, var(--theme-primary) 8%, white);
+    }
+    html[data-theme] .opt-btn.selected .opt-circle {
+      background: var(--theme-primary);
+      border-color: var(--theme-primary);
+    }
+    html[data-theme] .timer-pill {
+      border-color: var(--theme-primary);
+    }
+
+    .theme-picker-wrap { position: relative; }
+    .theme-trigger {
+      min-height: 32px;
+      padding: 5px 9px;
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      background: rgba(255,255,255,.12);
+      font: 800 11px system-ui, sans-serif;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .theme-trigger:active { transform: scale(.97); }
+    .theme-menu {
+      position: fixed;
+      z-index: 220;
+      top: 62px;
+      right: 10px;
+      width: min(290px, calc(100vw - 20px));
+      padding: 13px;
+      border-radius: 16px;
+      background: #fff;
+      color: #0f172a;
+      border: 1px solid #dbe5f1;
+      box-shadow: 0 18px 48px rgba(0,0,0,.3);
+    }
+    .theme-menu-title {
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 3px;
+      color: #0f172a;
+    }
+    .theme-menu-sub {
+      font-size: 10.5px;
+      color: #64748b;
+      margin-bottom: 10px;
+    }
+    .theme-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 7px;
+    }
+    .theme-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 7px 8px;
+      border-radius: 10px;
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+      color: #1e293b;
+      font: 800 11.5px system-ui, sans-serif;
+      cursor: pointer;
+      text-align: left;
+    }
+    .theme-option.active {
+      border-color: var(--theme-primary);
+      background: color-mix(in srgb, var(--theme-primary) 8%, white);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--theme-primary) 12%, transparent);
+    }
+    .theme-swatch {
+      width: 23px;
+      height: 23px;
+      border-radius: 8px;
+      flex: 0 0 23px;
+      border: 1px solid rgba(15,23,42,.12);
+    }
+    .theme-option-check {
+      margin-left: auto;
+      color: var(--theme-primary);
+      font-size: 13px;
+    }
+    @media (max-width: 390px) {
+      .theme-trigger { padding: 5px 7px; font-size: 10px; }
+      .top-actions { gap: 4px; }
+      .lang-btn { padding-left: 6px; padding-right: 6px; }
+      .theme-menu { top: 56px; }
+    }
+    /* =============== END MULTI-THEME SYSTEM =============== */
+
+
+  </style>
+</head>
+<body>
+
+  <!-- ==================== GLOBAL STICKY TOP BAR ==================== -->
+  <header class="top-bar">
+    <div class="brand-box">
+      <div class="brand-icon">L6</div>
+      <div class="brand-title" id="app-header-title">RRB NTPC L6 DI Vault</div>
+    </div>
+
+    <div class="top-actions">
+      <div class="lang-group" role="group" aria-label="Language Switcher">
+        <button type="button" class="lang-btn" data-lang="hi" onclick="window.setLang('hi')">हिं</button>
+        <button type="button" class="lang-btn" data-lang="en" onclick="window.setLang('en')">EN</button>
+        <button type="button" class="lang-btn active" data-lang="both" onclick="window.setLang('both')">Bi</button>
+      </div>
+      <div class="theme-picker-wrap">
+        <button type="button" class="theme-trigger" id="theme-trigger" onclick="window.toggleThemeMenu()" aria-expanded="false">🎨 Theme</button>
+      </div>
+      <button type="button" id="top-lock-btn" class="btn btn-glass btn-sm hidden" onclick="window.lockVaultNow()">
+        🔒
+      </button>
+    </div>
+  </header>
+
+
+  <div id="theme-menu" class="theme-menu hidden" role="dialog" aria-label="Choose app theme">
+    <div class="theme-menu-title">🎨 Choose Your Theme</div>
+    <div class="theme-menu-sub">Select a colour style for your app. Your choice is saved automatically.</div>
+    <div class="theme-options">
+      <button type="button" class="theme-option" data-theme-choice="ocean" onclick="window.applyTheme('ocean')"><span class="theme-swatch" style="background:linear-gradient(135deg,#2563eb,#1e3a8a)"></span>Ocean Blue<span class="theme-option-check"></span></button>
+      <button type="button" class="theme-option" data-theme-choice="emerald" onclick="window.applyTheme('emerald')"><span class="theme-swatch" style="background:linear-gradient(135deg,#059669,#065f46)"></span>Emerald<span class="theme-option-check"></span></button>
+      <button type="button" class="theme-option" data-theme-choice="violet" onclick="window.applyTheme('violet')"><span class="theme-swatch" style="background:linear-gradient(135deg,#7c3aed,#4c1d95)"></span>Royal Violet<span class="theme-option-check"></span></button>
+      <button type="button" class="theme-option" data-theme-choice="sunset" onclick="window.applyTheme('sunset')"><span class="theme-swatch" style="background:linear-gradient(135deg,#ea580c,#9a3412)"></span>Sunset<span class="theme-option-check"></span></button>
+      <button type="button" class="theme-option" data-theme-choice="rose" onclick="window.applyTheme('rose')"><span class="theme-swatch" style="background:linear-gradient(135deg,#e11d48,#9f1239)"></span>Rose Pink<span class="theme-option-check"></span></button>
+      <button type="button" class="theme-option" data-theme-choice="teal" onclick="window.applyTheme('teal')"><span class="theme-swatch" style="background:linear-gradient(135deg,#0d9488,#115e59)"></span>Teal Fresh<span class="theme-option-check"></span></button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-box" class="hidden" role="status" aria-live="polite"></div>
+
+  <!-- ==================== SCREEN 1: LOCK SCREEN ==================== -->
+  <section id="screen-lock">
+    <div class="lock-card">
+      <div class="lock-badge">🛡️</div>
+      <h1 style="text-align:center; font-size:clamp(16px,4.5vw,19px); font-weight:900;" id="lock-title">
+        RRB Station Master Vault
+      </h1>
+      <p style="text-align:center; font-size:12px; color:#cbd5e1; margin:4px 0 14px;" id="lock-subtitle">
+        100% ऑफलाइन मॉक टेस्ट वॉल्ट को खोलने के लिए पासवर्ड डालें
+      </p>
+
+      <div style="margin:0 0 14px;">
+        <div style="font-size:12px;font-weight:800;color:#e2e8f0;margin-bottom:7px;text-align:center;">
+          मोड चुनें / Select Mode
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <button type="button" id="mode-di-btn" class="btn btn-blue" onclick="window.selectVaultMode('di')" style="min-height:54px;white-space:normal;">
+            📊 DI Mode
+            <small style="display:block;font-size:10px;font-weight:600;">Data Interpretation</small>
+          </button>
+          <button type="button" id="mode-ms-btn" class="btn btn-outline" onclick="window.selectVaultMode('maths_science')" style="min-height:54px;white-space:normal;">
+            ➗ Maths &amp; Science
+            <small style="display:block;font-size:10px;font-weight:600;">30 Q • 30 Min</small>
+          </button>
+        </div>
+      </div>
+
+      <div id="lock-err" class="hidden" style="background:rgba(220,38,38,0.25); border:1px solid #f87171; color:#fecaca; padding:7px; border-radius:7px; font-size:12px; font-weight:700; text-align:center; margin-bottom:10px;"></div>
+
+      <div style="margin-bottom:12px;">
+        <label for="pin-input" id="pin-label" style="display:block; font-size:12px; font-weight:700; color:#e2e8f0; margin-bottom:5px;">
+          पासवर्ड दर्ज करें / Enter Password:
+        </label>
+        <input
+          type="password"
+          id="pin-input"
+          class="input-field"
+          placeholder="e.g. 1234"
+          autocomplete="off"
+          onkeydown="if(event.key==='Enter') window.handleUnlock()"
+        />
+      </div>
+
+      <button type="button" class="btn btn-gold btn-lg" style="width:100%; margin-bottom:12px;" onclick="window.handleUnlock()">
+        <span id="unlock-btn-text">🔓 पासवर्ड सेव करें और खोलें / Unlock Vault</span>
+      </button>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#94a3b8; padding-top:10px; border-top:1px solid rgba(255,255,255,0.14);">
+        <span id="lock-saved-info">Offline Storage Ready</span>
+        <button type="button" style="background:none; border:none; color:#93c5fd; text-decoration:underline; font-size:11px; font-weight:700; cursor:pointer;" onclick="window.resetVaultPin()">
+          <span id="reset-pin-text">Reset Password / रीसेट</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 2: MAIN DASHBOARD ==================== -->
+  <section id="screen-dashboard" class="hidden">
+    <div class="main-wrap">
+      <!-- Two Primary Action Buttons -->
+      <div class="hero-grid">
+        <button type="button" class="hero-btn hero-btn-start" onclick="window.promptTimerAndStart()">
+          <div class="hero-title" id="dash-start-title">🚀 टेस्ट शुरू करें / Start Test</div>
+          <div class="hero-sub" id="dash-start-sub">कस्टम टाइमर सेट करके तुरंत मॉक टेस्ट शुरू करें</div>
+        </button>
+
+        <button type="button" class="hero-btn hero-btn-create" onclick="window.openCreateModal()">
+          <div class="hero-title" id="dash-create-title">➕ नया टेस्ट बनाएं / Create New Test</div>
+          <div class="hero-sub" id="dash-create-sub">फ़ोन से कितने भी प्रश्नों की .JSON अपलोड करें</div>
+        </button>
+      </div>
+
+
+      <!-- Daily Railway Science Test Module -->
+      <div id="daily-science-module" class="daily-science-card hidden">
+        <div class="daily-science-head">
+          <div>
+            <div class="daily-science-title">🧪 Daily Railway Science Tests</div>
+            <div class="daily-science-sub" id="daily-science-date">आज के लिए 2 टेस्ट • प्रत्येक में 30 प्रश्न</div>
+          </div>
+          <span class="daily-status" id="daily-science-status">GITHUB FEED • SETUP REQUIRED</span><button type="button" class="btn btn-outline" style="padding:7px 11px;font-size:11px" onclick="window.refreshDailyScienceFromGitHub(true)">↻ Refresh</button>
+        </div>
+        <div class="daily-test-grid">
+          <div class="daily-test-tile">
+            <h3>🌅 Daily Test 1</h3>
+            <p>30 Science प्रश्न • 30 मिनट</p>
+            <button type="button" class="btn btn-green btn-sm" style="width:100%" onclick="window.startDailyScienceTest(1)">टेस्ट शुरू करें / Start</button>
+          </div>
+          <div class="daily-test-tile">
+            <h3>🌇 Daily Test 2</h3>
+            <p>30 Science प्रश्न • 30 मिनट</p>
+            <button type="button" class="btn btn-green btn-sm" style="width:100%" onclick="window.startDailyScienceTest(2)">टेस्ट शुरू करें / Start</button>
+          </div>
+        </div>
+        <div class="daily-source-note" id="daily-science-source-note">GitHub Online Auto-Update सेटअप होने पर रोज़ के 2 टेस्ट यहाँ डाउनलोड होंगे। अभी स्थानीय बैकअप प्रश्न उपलब्ध हैं। बिना स्रोत सत्यापन के किसी प्रश्न को PYQ नहीं बताया जाएगा।</div>
+      </div>
+
+      <!-- Saved Tests Library (Scrollable Inside Box) -->
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+          <div>
+            <h2 style="font-size:clamp(14px,3.8vw,16px); font-weight:900; color:var(--navy);" id="lib-heading">
+              📚 सेव किए गए टेस्ट (Saved Tests Library)
+            </h2>
+            <p style="font-size:11px; color:var(--text-muted);" id="lib-sub">
+              अधिक टेस्ट होने पर केवल यह बॉक्स अंदर स्क्रॉल होगा
+            </p>
+          </div>
+          <span id="lib-count-badge" class="chip" style="background:var(--blue-soft); color:var(--blue); border-color:#bfdbfe;">
+            1 Test
+          </span>
+        </div>
+
+        <!-- Scrollable Saved Tests List -->
+        <div id="saved-tests-list" class="saved-tests-scroll-box"></div>
+      </div>
+
+      <!-- Bottom Utility Card: Overall Analytics View + Copy AI Prompt -->
+      <div class="dash-bottom-bar">
+        <div style="font-size:11.5px; color:#cbd5e1; font-weight:700;" id="overall-card-sub">
+          सभी सेव किए गए टेस्टों का समग्र ग्राफ देखें या नए प्रश्नों का AI प्रॉम्प्ट कॉपी करें।
+        </div>
+        <div class="dash-bottom-actions">
+          <button type="button" class="btn btn-gold" onclick="window.openOverallScreen()">
+            <span id="btn-overall-view-lbl">📊 ओवरऑल व्यू / Overall View</span>
+          </button>
+          <button type="button" class="btn btn-glass" onclick="window.copyAiPrompt()">
+            <span id="btn-copy-prompt-lbl">📋 Copy AI Prompt</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 3: LIVE CBT EXAM SCREEN ==================== -->
+  <section id="screen-exam" class="hidden" style="padding-bottom:68px;">
+    <div class="exam-subbar">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span id="exam-q-badge" style="background:var(--blue); color:#fff; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:800;">
+          Q 1/30
+        </span>
+        <span style="font-size:11px; color:#cbd5e1; font-weight:700;">+1 / -0.33</span>
+      </div>
+
+      <div id="exam-timer-pill" class="timer-pill tabular-nums">40:00</div>
+
+      <div style="display:flex; align-items:center; gap:5px;">
+        <button type="button" class="btn btn-glass btn-sm" onclick="window.pauseAndExitTest()">⏸ Pause & Exit</button>
+        <button type="button" class="btn btn-glass btn-sm" onclick="window.togglePaletteDrawer(true)">
+          Grid (<span id="answered-count-lbl">0</span>)
+        </button>
+        <button type="button" class="btn btn-green btn-sm" onclick="window.confirmSubmitTest()">
+          Submit
+        </button>
+      </div>
+    </div>
+
+    <div class="main-wrap" style="padding-top:10px;">
+      <!-- Set Jump Tabs -->
+      <div id="exam-set-tabs" class="set-tabs"></div>
+
+      <!-- Collapsible DI Data / Chart Container -->
+      <div id="exam-di-container" class="di-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:6px;">
+          <span id="exam-di-title" style="font-size:12.5px; font-weight:800; color:var(--navy);">DI Data</span>
+          <button type="button" class="btn btn-outline btn-sm" style="min-height:26px; padding:2px 8px; font-size:11px;" onclick="window.toggleDiBox()">
+            Hide/Show Chart
+          </button>
+        </div>
+        <div id="exam-di-body"></div>
+      </div>
+
+      <!-- Question Stem & 4 Options -->
+      <div class="card" style="padding:14px 12px; margin-bottom:10px;">
+        <div id="exam-q-stem" class="q-stem"></div>
+        <div id="exam-options-box"></div>
+      </div>
+    </div>
+
+    <!-- Sticky 4-Column Bottom Bar -->
+    <footer class="exam-bottom-bar">
+      <div class="exam-bottom-grid">
+        <button type="button" id="btn-prev-q" class="btn btn-outline" onclick="window.prevQ()">← Prev</button>
+        <button type="button" id="btn-rev-q" class="btn btn-purple" onclick="window.toggleReview()">★ Review</button>
+        <button type="button" id="btn-clr-q" class="btn btn-red-soft" onclick="window.clearResponse()">✕ Clear</button>
+        <button type="button" id="btn-next-q" class="btn btn-green" onclick="window.nextQ()">Next →</button>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ==================== SCREEN 4: SCORECARD & SOLUTIONS ==================== -->
+  <section id="screen-result" class="hidden">
+    <div class="main-wrap">
+      <div class="card" style="background:linear-gradient(135deg,#09152b,#0f294a); color:#ffffff; border-color:#334155;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <div>
+            <span style="background:#34d399; color:#09152b; font-size:10px; font-weight:900; padding:2px 7px; border-radius:4px;">
+              SCORECARD / परिणाम
+            </span>
+            <h2 id="res-test-name" style="font-size:clamp(14px,3.8vw,17px); font-weight:900; margin-top:4px; color:#ffffff;"></h2>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-glass btn-sm" onclick="window.showScreen('screen-dashboard')">
+              🏠 Home
+            </button>
+            <button type="button" class="btn btn-blue btn-sm" onclick="window.openOverallScreen()">
+              📊 Overall View
+            </button>
+            <button type="button" class="btn btn-gold btn-sm" onclick="window.reattemptCurrentTest()">
+              🔄 Retry
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-box">
+          <div style="font-size:11px; color:var(--text-muted); font-weight:700;">Final Score / कुल स्कोर</div>
+          <div id="res-net-score" class="tabular-nums" style="font-size:22px; font-weight:900; color:var(--navy); margin:2px 0;">0.00 / 30</div>
+          <div id="res-marks-sub" style="font-size:11px; color:var(--text-muted);"></div>
+        </div>
+        <div class="kpi-box">
+          <div style="font-size:11px; color:var(--text-muted); font-weight:700;">Accuracy &amp; Time / सटीकता</div>
+          <div id="res-acc-val" class="tabular-nums" style="font-size:22px; font-weight:900; color:var(--green); margin:2px 0;">0%</div>
+          <div id="res-time-sub" style="font-size:11px; color:var(--text-muted);"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+          <h3 style="font-size:14px; font-weight:900; color:var(--navy);">
+            📝 Step-by-Step Solutions / विस्तृत हल
+          </h3>
+          <div style="display:flex; flex-wrap:wrap; gap:4px;">
+            <button type="button" class="btn btn-outline btn-sm" onclick="window.filterSolutions('all')" id="flt-btn-all">All</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="window.filterSolutions('wrong')" id="flt-btn-wrong">Wrong</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="window.filterSolutions('skip')" id="flt-btn-skip">Skipped</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="window.filterSolutions('correct')" id="flt-btn-correct">Correct</button>
+          </div>
+        </div>
+        <div id="res-solutions-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 5: OVERALL ANALYTICS VIEW ==================== -->
+  <section id="screen-overall" class="hidden">
+    <div class="main-wrap">
+      <div class="card" style="background:linear-gradient(135deg,#09152b,#0f294a); color:#ffffff; border-color:#334155;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div>
+            <span style="background:#fbbf24; color:#09152b; font-size:10px; font-weight:900; padding:2px 7px; border-radius:4px;">
+              ALL TESTS ANALYTICS / समग्र विश्लेषण
+            </span>
+            <h2 id="overall-header-title" style="font-size:clamp(15px,4vw,18px); font-weight:900; margin-top:4px; color:#ffffff;">
+              📊 ओवरऑल परफॉरमेंस ग्राफ (Overall View)
+            </h2>
+          </div>
+          <button type="button" class="btn btn-gold btn-sm" onclick="window.showScreen('screen-dashboard')">
+            ← Back to Dashboard
+          </button>
+        </div>
+      </div>
+
+      <!-- Aggregate KPIs across all tests -->
+      <div class="overall-kpi-grid">
+        <div class="overall-kpi-card">
+          <div style="font-size:11px; color:var(--text-muted); font-weight:700;" id="ov-kpi1-lbl">Tests Attempted / कुल अटेम्प्ट</div>
+          <div id="ov-kpi1-val" class="tabular-nums" style="font-size:20px; font-weight:900; color:var(--navy); margin-top:2px;">0 / 1</div>
+          <div id="ov-kpi1-sub" style="font-size:11px; color:var(--text-muted);">Total Saved Library</div>
+        </div>
+        <div class="overall-kpi-card">
+          <div style="font-size:11px; color:var(--text-muted); font-weight:700;" id="ov-kpi2-lbl">Avg Score % / औसत स्कोर %</div>
+          <div id="ov-kpi2-val" class="tabular-nums" style="font-size:20px; font-weight:900; color:var(--blue); margin-top:2px;">0.0%</div>
+          <div id="ov-kpi2-sub" style="font-size:11px; color:var(--text-muted);">Best: 0.0%</div>
+        </div>
+        <div class="overall-kpi-card">
+          <div style="font-size:11px; color:var(--text-muted); font-weight:700;" id="ov-kpi3-lbl">Overall Accuracy / कुल सटीकता</div>
+          <div id="ov-kpi3-val" class="tabular-nums" style="font-size:20px; font-weight:900; color:var(--green); margin-top:2px;">0.0%</div>
+          <div id="ov-kpi3-sub" style="font-size:11px; color:var(--text-muted);">Across all answers</div>
+        </div>
+        <div class="overall-kpi-card">
+          <div style="font-size:11px; color:var(--text-muted); font-weight:700;" id="ov-kpi4-lbl">Avg Time Spent / औसत समय</div>
+          <div id="ov-kpi4-val" class="tabular-nums" style="font-size:20px; font-weight:900; color:#d97706; margin-top:2px;">00:00</div>
+          <div id="ov-kpi4-sub" style="font-size:11px; color:var(--text-muted);">Per attempted test</div>
+        </div>
+      </div>
+
+      <!-- Visual Chart 1: Test-wise Score (%) Bar Graph -->
+      <div class="chart-card">
+        <div class="chart-title">
+          <span id="ov-chart1-title">📊 टेस्ट-वार स्कोर (%) तुलना (Test-wise Score % Bar Graph)</span>
+        </div>
+        <div id="ov-bar-chart-box"></div>
+      </div>
+
+      <!-- Visual Chart 2: Accuracy (%) & Speed Trend Line Graph -->
+      <div class="chart-card">
+        <div class="chart-title">
+          <span id="ov-chart2-title">📈 एक्यूरेसी और स्कोर प्रोग्रेस (Accuracy &amp; Score Trend Line)</span>
+        </div>
+        <div id="ov-line-chart-box"></div>
+      </div>
+
+      <!-- Visual Chart 3: Overall Question Breakdown (Correct / Wrong / Skipped) -->
+      <div class="chart-card">
+        <div class="chart-title">
+          <span id="ov-chart3-title">🎯 कुल प्रश्न विश्लेषण (Correct vs Wrong vs Skipped)</span>
+        </div>
+        <div id="ov-doughnut-box"></div>
+      </div>
+
+      <!-- Attempted Tests Summary Table -->
+      <div class="chart-card">
+        <div class="chart-title">
+          <span id="ov-table-title">📋 सभी टेस्टों का रिकॉर्ड (All Tests Summary Table)</span>
+        </div>
+        <div id="ov-history-table-box"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MODAL 0: PRE-TEST CUSTOM TIMER PROMPT ==================== -->
+  <div id="modal-timer" class="modal-overlay hidden">
+    <div class="modal-box" style="max-width:390px;">
+      <div class="modal-head">
+        <span id="timer-modal-head">⏱️ सेट टाइमर / Set Test Timer</span>
+        <button type="button" class="btn btn-glass btn-sm" onclick="window.closeTimerModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="timer-modal-test-title" style="font-size:13.5px; font-weight:900; color:var(--navy); margin-bottom:4px;"></div>
+        <div id="timer-modal-q-info" style="font-size:12px; color:var(--text-muted); margin-bottom:12px; font-weight:700;"></div>
+
+        <label for="timer-modal-input" id="timer-modal-prompt-lbl" style="display:block; font-size:12.5px; font-weight:800; color:var(--text-main); margin-bottom:6px;">
+          कितने मिनट में यह टेस्ट अटेम्प्ट करना चाहेंगे? / Enter time (in minutes):
+        </label>
+        <input
+          type="number"
+          id="timer-modal-input"
+          class="input-field tabular-nums"
+          min="1"
+          max="300"
+          value="40"
+          style="font-size:18px; font-weight:900; text-align:center; margin-bottom:10px;"
+          onkeydown="if(event.key==='Enter') window.confirmTimerAndLaunch()"
+        />
+
+        <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; margin-bottom:14px;">
+          <button type="button" class="timer-chip-btn" onclick="window.setQuickTimerMinutes(15)">15 min</button>
+          <button type="button" class="timer-chip-btn" onclick="window.setQuickTimerMinutes(25)">25 min</button>
+          <button type="button" class="timer-chip-btn" onclick="window.setQuickTimerMinutes(40)">40 min</button>
+          <button type="button" class="timer-chip-btn" onclick="window.setQuickTimerMinutes(60)">60 min</button>
+        </div>
+
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn btn-outline" style="flex:1;" onclick="window.closeTimerModal()">Cancel</button>
+          <button type="button" class="btn btn-green btn-lg" style="flex:2;" onclick="window.confirmTimerAndLaunch()">
+            🚀 Start Now / शुरू करें
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 1: CREATE / UPLOAD NEW TEST ==================== -->
+  <div id="modal-create" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-head">
+        <span>➕ नया टेस्ट बनाएं / Create New Test</span>
+        <button type="button" class="btn btn-glass btn-sm" onclick="window.closeCreateModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">
+          आप जितने भी प्रश्न (5, 10, 20, 30, 50+) अपलोड करेंगे, उतने ही प्रश्नों का टेस्ट बन जाएगा और पुराने सभी टेस्ट सुरक्षित रहेंगे।
+        </p>
+
+        <div style="margin-bottom:8px;">
+          <label class="input-label" style="font-size:12px; font-weight:800; display:block; margin-bottom:4px;">
+            Test Title / टेस्ट का नाम:
+          </label>
+          <input type="text" id="create-title-inp" class="input-field" placeholder="e.g. RRB Level 6 — DI Practice Set #2" />
+        </div>
+
+        <div style="margin-bottom:10px;">
+          <label class="input-label" style="font-size:12px; font-weight:800; display:block; margin-bottom:4px;">
+            Default Timer (Minutes) / डिफ़ॉल्ट समय (मिनट):
+          </label>
+          <input type="number" id="create-mins-inp" class="input-field tabular-nums" value="40" min="1" max="300" />
+        </div>
+
+        <div style="border:2px dashed #60a5fa; background:var(--blue-soft); border-radius:10px; padding:10px; text-align:center; margin-bottom:10px;">
+          <input type="file" id="json-file-picker" accept=".json,.txt,application/json,text/plain" class="hidden" onchange="window.handleFileUpload(event)" />
+          <button type="button" class="btn btn-blue btn-sm" style="width:100%;" onclick="document.getElementById('json-file-picker').click()">
+            📂 फ़ोन से .JSON फ़ाइल चुनें / Select .JSON File
+          </button>
+          <div id="upload-status-text" style="font-size:11px; color:var(--text-muted); margin-top:5px; font-weight:700;">
+            या नीचे बॉक्स में JSON पेस्ट करें (कोई भी प्रश्न संख्या)
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; margin-bottom:8px;">
+          <button type="button" class="btn btn-gold btn-sm" onclick="window.loadDemoNewTest()">
+            ⚡ Demo 10-Q Test जोड़ें
+          </button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="window.copyAiPrompt()">
+            📋 Copy AI Prompt
+          </button>
+        </div>
+
+        <textarea
+          id="create-json-box"
+          class="input-field"
+          rows="4"
+          style="font-family:monospace; font-size:11.5px; margin-bottom:10px;"
+          placeholder='[{"question":{"hi":"...","en":"..."},"options":["A","B","C","D"],"correctIndex":0,"explanation":"..."}]'
+        ></textarea>
+
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn btn-outline" style="flex:1;" onclick="window.closeCreateModal()">Cancel</button>
+          <button type="button" class="btn btn-green" style="flex:2;" onclick="window.saveNewTestFromInput()">
+            ✅ सेव करें / Save Test
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 2: QUESTION PALETTE DRAWER ==================== -->
+  <div id="modal-palette" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-head">
+        <span>🔢 Question Palette / प्रश्न पैलेट</span>
+        <button type="button" class="btn btn-glass btn-sm" onclick="window.togglePaletteDrawer(false)">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:6px; font-size:11.5px; font-weight:700;">
+          <div style="background:var(--green-soft); color:var(--green); padding:6px; border-radius:6px;">
+            ● Answered: <span id="pal-cnt-ans">0</span>
+          </div>
+          <div style="background:var(--red-soft); color:var(--red); padding:6px; border-radius:6px;">
+            ● Not Answered: <span id="pal-cnt-not">0</span>
+          </div>
+          <div style="background:var(--purple-soft); color:var(--purple); padding:6px; border-radius:6px;">
+            ● Review: <span id="pal-cnt-rev">0</span>
+          </div>
+          <div style="background:#f1f5f9; color:#475569; padding:6px; border-radius:6px;">
+            ● Unvisited: <span id="pal-cnt-unv">0</span>
+          </div>
+        </div>
+
+        <div id="palette-buttons-grid" class="palette-grid"></div>
+
+        <button type="button" class="btn btn-green" style="width:100%; margin-top:14px;" onclick="window.togglePaletteDrawer(false); window.confirmSubmitTest();">
+          ✅ Submit Test / टेस्ट सबमिट करें
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 3: SUBMIT CONFIRMATION ==================== -->
+  <div id="modal-submit" class="modal-overlay hidden">
+    <div class="modal-box" style="max-width:380px;">
+      <div class="modal-head">
+        <span>📋 Submit Test / टेस्ट सबमिट करें?</span>
+        <button type="button" class="btn btn-glass btn-sm" onclick="document.getElementById('modal-submit').classList.add('hidden')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p id="submit-summary-text" style="font-size:13px; font-weight:700; color:var(--text-main); margin-bottom:14px;"></p>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn btn-outline" style="flex:1;" onclick="document.getElementById('modal-submit').classList.add('hidden')">
+            वापस जाएं
+          </button>
+          <button type="button" class="btn btn-green" style="flex:1;" onclick="window.submitTestNow()">
+            हाँ, सबमिट करें
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium Pause & Exit Confirmation -->
+  <div id="modal-pause-exit" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="pause-confirm-title"
+       onclick="if(event.target === this) window.closePauseExitModal();">
+    <div class="modal-box pause-confirm-box">
+      <div class="pause-confirm-body">
+        <div class="pause-confirm-icon">⏸️</div>
+        <h2 id="pause-confirm-title" class="pause-confirm-title">टेस्ट पॉज करके बाहर जाएँ?</h2>
+        <p id="pause-confirm-copy" class="pause-confirm-copy">
+          क्या आप अभी टेस्ट से बाहर जाना चाहते हैं? आप बाद में इसी जगह से दोबारा शुरू कर सकते हैं।
+        </p>
+        <div class="pause-save-note">
+          <span>💾</span>
+          <span id="pause-save-note-text">आपका बचा हुआ समय और सभी दिए गए उत्तर सुरक्षित सेव रहेंगे।</span>
+        </div>
+        <div class="pause-confirm-actions">
+          <button type="button" class="btn btn-outline" onclick="window.closePauseExitModal()">टेस्ट जारी रखें</button>
+          <button type="button" class="btn btn-blue" onclick="window.confirmPauseAndExit()">हाँ, पॉज करें</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Embedded Snapshot for Offline Export -->
+  <script id="vault-snapshot-json" type="application/json"></script>
+
+  <!-- ==================== 100% BUG-FREE JAVASCRIPT ENGINE ==================== -->
+  <script>
+    (function () {
+      "use strict";
+
+      /* 1. SAFE STORAGE WRAPPER (Never crashes on Android file:// or WebView) */
+      var STORAGE_KEY = "rrb_l6_vault_v3_safe";
+      var memStore = {};
+      var SafeStorage = {
+        get: function (k) {
+          try {
+            var v = window.localStorage.getItem(k);
+            if (v !== null) return v;
+          } catch (e) {}
+          return Object.prototype.hasOwnProperty.call(memStore, k) ? memStore[k] : null;
+        },
+        set: function (k, val) {
+          memStore[k] = String(val);
+          try {
+            window.localStorage.setItem(k, String(val));
+          } catch (e) {}
+        },
+        remove: function (k) {
+          delete memStore[k];
+          try {
+            window.localStorage.removeItem(k);
+          } catch (e) {}
+        }
+      };
+
+      /* 2. GLOBAL APP STATE */
+      var app = {
+        lang: "both", // 'hi' | 'en' | 'both'
+        activeMode: "di",
+        pin: "",
+        tests: [],
+        activeTestId: "builtin_30_di",
+        pendingStartTestId: null,
+        currentQ: 0,
+        diCollapsed: false,
+        remainingSec: 2400,
+        totalSec: 2400,
+        timerRef: null,
+        responses: [], // { sel: null|0..3, rev: false, visited: false }
+        solFilter: "all",
+        lastReport: null,
+        pendingAttempt: null
+      };
+
+      /* 3. BILINGUAL TEXT HELPERS */
+      function bi(hi, en) {
+        var h = hi || en || "";
+        var e = en || hi || "";
+        if (h === e) return e;
+        if (app.lang === "hi") return h;
+        if (app.lang === "en") return e;
+        return e + " / " + h;
+      }
+
+      function biBlock(hi, en) {
+        var h = hi || en || "";
+        var e = en || hi || "";
+        if (h === e) return e;
+        if (app.lang === "hi") return h;
+        if (app.lang === "en") return e;
+        return e + '<span class="bi-sub">' + h + "</span>";
+      }
+
+      function toast(msg) {
+        var el = document.getElementById("toast-box");
+        if (!el) return;
+        el.textContent = msg;
+        el.classList.remove("hidden");
+        if (el._t) clearTimeout(el._t);
+        el._t = setTimeout(function () {
+          el.classList.add("hidden");
+        }, 2800);
+      }
+
+      /* 4. DYNAMIC SVG & TABLE CHART GENERATORS (Compact & Mobile-Safe) */
+      function renderSetVisual(setId) {
+        if (setId === 1) {
+          return (
+            '<div style="font-size:12px;margin-bottom:4px;">' +
+            biBlock(
+              "<strong>निर्देश (Q1–Q5):</strong> 5 रेलवे जोनों (A–E) में दैनिक यात्री (हजार में) और प्रति यात्री औसत किराया (₹ में):",
+              "<strong>Directions (Q1–Q5):</strong> Daily Passengers (in thousands) & Average Fare (in ₹) across 5 Railway Zones:"
+            ) +
+            "</div>" +
+            '<table class="di-table"><thead><tr>' +
+            "<th>" + bi("जोन", "Zone") + "</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th>" +
+            "</tr></thead><tbody>" +
+            "<tr><td>" + bi("यात्री (हजार)", "Pass. (k)") + "</td><td>40</td><td>50</td><td>35</td><td>45</td><td>30</td></tr>" +
+            "<tr><td>" + bi("किराया (₹)", "Fare (₹)") + "</td><td>₹250</td><td>₹300</td><td>₹400</td><td>₹200</td><td>₹500</td></tr>" +
+            "</tbody></table>"
+          );
+        }
+
+        if (setId === 2) {
+          var slices = [
+            { lbl: "Lines", deg: 90, col: "#1d4ed8" },
+            { lbl: "Stock", deg: 72, col: "#059669" },
+            { lbl: "Safety", deg: 54, col: "#d97706" },
+            { lbl: "Electr.", deg: 108, col: "#7c3aed" },
+            { lbl: "Amen.", deg: 36, col: "#e11d48" }
+          ];
+          var cx = 85, cy = 88, r = 72, ang = -90, paths = "";
+          for (var i = 0; i < slices.length; i++) {
+            var s = slices[i];
+            var r1 = (ang * Math.PI) / 180;
+            var r2 = ((ang + s.deg) * Math.PI) / 180;
+            var x1 = cx + r * Math.cos(r1), y1 = cy + r * Math.sin(r1);
+            var x2 = cx + r * Math.cos(r2), y2 = cy + r * Math.sin(r2);
+            paths += '<path d="M ' + cx + " " + cy + " L " + x1.toFixed(1) + " " + y1.toFixed(1) + " A " + r + " " + r + " 0 0 1 " + x2.toFixed(1) + " " + y2.toFixed(1) + ' Z" fill="' + s.col + '" stroke="#fff" stroke-width="1.5"/>';
+            var mid = ((ang + s.deg / 2) * Math.PI) / 180;
+            var tx = cx + r * 0.62 * Math.cos(mid), ty = cy + r * 0.62 * Math.sin(mid);
+            paths += '<text x="' + tx.toFixed(1) + '" y="' + ty.toFixed(1) + '" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle" dominant-baseline="middle">' + s.deg + "°</text>";
+            ang += s.deg;
+          }
+          var leg =
+            '<g font-size="10" font-weight="700" fill="#0f172a">' +
+            '<rect x="175" y="22" width="10" height="10" fill="#1d4ed8"/><text x="190" y="31">New Lines: 90°</text>' +
+            '<rect x="175" y="48" width="10" height="10" fill="#059669"/><text x="190" y="57">Rolling Stock: 72°</text>' +
+            '<rect x="175" y="74" width="10" height="10" fill="#d97706"/><text x="190" y="83">Safety &amp; Sig: 54°</text>' +
+            '<rect x="175" y="100" width="10" height="10" fill="#7c3aed"/><text x="190" y="109">Electrification: 108°</text>' +
+            '<rect x="175" y="126" width="10" height="10" fill="#e11d48"/><text x="190" y="135">Amenities: 36°</text>' +
+            '<text x="175" y="158" font-size="9.5" fill="#1e3a8a">Total = ₹2,40,000 Cr (360°)</text></g>';
+
+          return (
+            '<div style="font-size:12px;margin-bottom:4px;">' +
+            biBlock(
+              "<strong>निर्देश (Q6–Q10):</strong> रेलवे कुल वार्षिक बजट = <strong>₹2,40,000 करोड़ (360°)</strong> का पाई चार्ट वितरण:",
+              "<strong>Directions (Q6–Q10):</strong> Annual Railway Budget = <strong>₹2,40,000 Crore (360°)</strong> Pie Distribution:"
+            ) +
+            "</div>" +
+            '<svg viewBox="0 0 320 175" style="width:100%;max-width:340px;height:auto;display:block;margin:0 auto;background:#fff;border-radius:8px;border:1px solid #e2e8f0;">' +
+            paths + leg + "</svg>"
+          );
+        }
+
+        if (setId === 3) {
+          var items = [
+            { f: "P", t: 800, a: 720 },
+            { f: "Q", t: 1000, a: 1150 },
+            { f: "R", t: 1200, a: 1080 },
+            { f: "S", t: 900, a: 990 }
+          ];
+          var svgBars = '<line x1="32" y1="150" x2="305" y2="150" stroke="#64748b" stroke-width="1.5"/>';
+          for (var b = 0; b < items.length; b++) {
+            var it = items[b];
+            var x = 48 + b * 66;
+            var th = (it.t / 1300) * 115;
+            var ah = (it.a / 1300) * 115;
+            svgBars +=
+              '<rect x="' + x + '" y="' + (150 - th).toFixed(1) + '" width="20" height="' + th.toFixed(1) + '" fill="#1d4ed8" rx="2"/>' +
+              '<text x="' + (x + 10) + '" y="' + (146 - th).toFixed(1) + '" font-size="8.5" font-weight="800" fill="#1e3a8a" text-anchor="middle">' + it.t + "</text>" +
+              '<rect x="' + (x + 22) + '" y="' + (150 - ah).toFixed(1) + '" width="20" height="' + ah.toFixed(1) + '" fill="#059669" rx="2"/>' +
+              '<text x="' + (x + 32) + '" y="' + (146 - ah).toFixed(1) + '" font-size="8.5" font-weight="800" fill="#065f46" text-anchor="middle">' + it.a + "</text>" +
+              '<text x="' + (x + 21) + '" y="164" font-size="10" font-weight="800" fill="#0f172a" text-anchor="middle">Fac ' + it.f + "</text>";
+          }
+          return (
+            '<div style="font-size:12px;margin-bottom:4px;">' +
+            biBlock(
+              "<strong>निर्देश (Q11–Q15):</strong> 4 रेल कोच फैक्ट्रियों (P, Q, R, S) का लक्ष्य (नीला) बनाम वास्तविक उत्पादन (हरा):",
+              "<strong>Directions (Q11–Q15):</strong> Target (Blue) vs Actual Production (Green) across 4 Coach Factories (P, Q, R, S):"
+            ) +
+            "</div>" +
+            '<svg viewBox="0 0 320 172" style="width:100%;max-width:340px;height:auto;display:block;margin:0 auto;background:#fff;border-radius:8px;border:1px solid #e2e8f0;">' +
+            '<text x="160" y="15" font-size="9.5" font-weight="800" fill="#334155" text-anchor="middle">■ Target (Blue)   ■ Actual (Green)</text>' +
+            svgBars + "</svg>"
+          );
+        }
+
+        if (setId === 4) {
+          var pts = [
+            { y: "2020", v: 1200 },
+            { y: "2021", v: 1260 },
+            { y: "2022", v: 1410 },
+            { y: "2023", v: 1500 },
+            { y: "2024", v: 1590 },
+            { y: "2025", v: 1740 }
+          ];
+          var poly = [], nodes = "";
+          for (var p = 0; p < pts.length; p++) {
+            var px = 34 + p * 50;
+            var py = 145 - ((pts[p].v - 1100) / 750) * 105;
+            poly.push(px + "," + py.toFixed(1));
+            nodes +=
+              '<circle cx="' + px + '" cy="' + py.toFixed(1) + '" r="4" fill="#1d4ed8" stroke="#fff" stroke-width="1.5"/>' +
+              '<text x="' + px + '" y="' + (py - 8).toFixed(1) + '" font-size="9" font-weight="800" fill="#0f294a" text-anchor="middle">' + pts[p].v + "</text>" +
+              '<text x="' + px + '" y="162" font-size="9.5" font-weight="800" fill="#334155" text-anchor="middle">' + pts[p].y + "</text>";
+          }
+          return (
+            '<div style="font-size:12px;margin-bottom:4px;">' +
+            biBlock(
+              "<strong>निर्देश (Q16–Q20):</strong> 2020 से 2025 तक भारतीय रेलवे की माल ढुलाई (मिलियन टन में):",
+              "<strong>Directions (Q16–Q20):</strong> Freight Loading (in Million Tonnes) from 2020 to 2025:"
+            ) +
+            "</div>" +
+            '<svg viewBox="0 0 320 172" style="width:100%;max-width:340px;height:auto;display:block;margin:0 auto;background:#fff;border-radius:8px;border:1px solid #e2e8f0;">' +
+            '<line x1="20" y1="145" x2="300" y2="145" stroke="#94a3b8" stroke-width="1.5"/>' +
+            '<polyline fill="none" stroke="#1d4ed8" stroke-width="2.5" points="' + poly.join(" ") + '"/>' +
+            nodes + "</svg>"
+          );
+        }
+
+        if (setId === 5) {
+          return (
+            '<div style="font-size:12px;margin-bottom:4px;">' +
+            biBlock(
+              "<strong>निर्देश (Q21–Q25):</strong> 4 रेलवे मंडलों (M₁–M₄) में कुल कर्मचारी और (पुरुष : महिला) अनुपात:",
+              "<strong>Directions (Q21–Q25):</strong> Total Employees & (Male : Female) Ratio across 4 Divisions (M₁–M₄):"
+            ) +
+            "</div>" +
+            '<table class="di-table"><thead><tr>' +
+            "<th>" + bi("मंडल", "Div") + "</th><th>M₁</th><th>M₂</th><th>M₃</th><th>M₄</th>" +
+            "</tr></thead><tbody>" +
+            "<tr><td>" + bi("कुल", "Total") + "</td><td>4500</td><td>5600</td><td>4800</td><td>5100</td></tr>" +
+            "<tr><td>M : F</td><td>5 : 4</td><td>4 : 3</td><td>7 : 5</td><td>9 : 8</td></tr>" +
+            "</tbody></table>"
+          );
+        }
+
+        if (setId === 6) {
+          return (
+            '<div style="font-size:12px;margin-bottom:4px;">' +
+            biBlock(
+              "<strong>निर्देश (Q26–Q30 केसलेट):</strong> एक जंक्शन पर कुल <strong>3,600 यात्री</strong> हैं। 45% अनारक्षित (1,620; M:F = 5:4), 35% स्लीपर (1,260; 60% पुरुष), शेष 20% AC (720; महिलाएं पुरुषों से 120 कम):",
+              "<strong>Directions (Q26–Q30 Caselet):</strong> Total <strong>3,600 passengers</strong> at a junction. 45% General (1,620; M:F = 5:4), 35% Sleeper (1,260; 60% Male), remaining 20% AC (720; Females 120 less than Males):"
+            ) +
+            "</div>" +
+            '<table class="di-table"><thead><tr>' +
+            "<th>" + bi("श्रेणी", "Class") + "</th><th>" + bi("कुल", "Total") + "</th><th>" + bi("पुरुष", "Male") + "</th><th>" + bi("महिला", "Female") + "</th>" +
+            "</tr></thead><tbody>" +
+            "<tr><td>General (45%)</td><td>1,620</td><td>900</td><td>720</td></tr>" +
+            "<tr><td>Sleeper (35%)</td><td>1,260</td><td>756</td><td>504</td></tr>" +
+            "<tr><td>AC (20%)</td><td>720</td><td>420</td><td>300</td></tr>" +
+            "</tbody></table>"
+          );
+        }
+        return "";
+      }
+
+      /* Generic renderer for imported DI sets */
+      function diEsc(value) {
+        return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
+          return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+        });
+      }
+
+      function renderImportedDiSet(set) {
+        if (!set) return "";
+        var data = set.data || {};
+        var out = '<div style="font-size:12px;font-weight:700;margin-bottom:7px;">' +
+          biBlock(diEsc((set.title || {}).hi || (set.title || {}).en || "डेटा सेट"),
+                  diEsc((set.title || {}).en || (set.title || {}).hi || "Data Set")) + "</div>";
+
+        var columns = data.columns || [];
+        var rows = data.rows || [];
+        if (columns.length && rows.length) {
+          out += '<div style="overflow-x:auto;"><table class="di-table"><thead><tr>';
+          columns.forEach(function (col) { out += "<th>" + diEsc(col) + "</th>"; });
+          out += "</tr></thead><tbody>";
+          rows.forEach(function (row) {
+            out += "<tr>";
+            row.forEach(function (cell) { out += "<td>" + diEsc(cell) + "</td>"; });
+            out += "</tr>";
+          });
+          out += "</tbody></table></div>";
+        }
+
+        if (set.type === "caselet") {
+          if (data.totalPassengers != null) {
+            out += '<div style="padding:8px;background:#eff6ff;border-radius:7px;margin:6px 0;font-weight:800;">' +
+              diEsc(bi("कुल यात्री: ", "Total passengers: ")) + diEsc(data.totalPassengers) + "</div>";
+          }
+          if (Array.isArray(data.facts)) {
+            out += '<div style="font-size:12px;line-height:1.65;">';
+            data.facts.forEach(function (fact) {
+              out += "<p>• " + biBlock(diEsc(fact.hi || fact.en || ""), diEsc(fact.en || fact.hi || "")) + "</p>";
+            });
+            out += "</div>";
+          }
+        }
+
+        // Graph definitions may be stored either at diSet.graph or data.graph.
+        // Also synthesize a chart model from the raw DI data when needed.
+        var graph = set.graph || data.graph || null;
+        if (!graph && (set.type === "pie_chart" || set.type === "pie")) {
+          var pieItems = data.segments || data.items || data.values || [];
+          if (Array.isArray(pieItems) && pieItems.length) {
+            graph = { chartType: "pie", nameKey: "name", valueKey: "value", data: pieItems.map(function (item, idx) {
+              return typeof item === "object" ? { name: item.name || item.label || item.category || ("Item " + (idx + 1)), value: Number(item.value != null ? item.value : (item.amount != null ? item.amount : item.percentage)) } : { name: String(data.labels && data.labels[idx] || ("Item " + (idx + 1))), value: Number(item) };
+            }) };
+          }
+        } else if (!graph && (set.type === "bar_graph" || set.type === "bar" || set.type === "line_graph" || set.type === "line")) {
+          var labels = data.labels || data.categories || data.x || [];
+          var values = data.values || data.series || data.y || [];
+          if (Array.isArray(labels) && Array.isArray(values) && labels.length && values.length) {
+            graph = { chartType: (set.type === "line_graph" || set.type === "line") ? "line" : "bar", xKey: "label", series: [{ dataKey: "value", label: set.title && (set.title.en || set.title.hi) || "Value" }], data: labels.map(function (label, idx) { return { label: label, value: Number(values[idx] || 0) }; }) };
+          }
+        }
+        if (graph && (graph.chartType === "pie" || graph.chartType === "pie_chart") && Array.isArray(graph.data)) {
+          var nameKey = graph.nameKey || "name";
+          var valueKey = graph.valueKey || "value";
+          var total = graph.data.reduce(function (sum, item) { return sum + Number(item[valueKey] || 0); }, 0);
+          var colors = ["#1d4ed8", "#059669", "#d97706", "#7c3aed", "#e11d48", "#0891b2"];
+          var cx = 105, cy = 100, radius = 82, angle = -90, paths = "";
+          graph.data.forEach(function (item, index) {
+            var value = Number(item[valueKey] || 0);
+            if (!total || value <= 0) return;
+            var sweep = value / total * 360;
+            var a1 = angle * Math.PI / 180, a2 = (angle + sweep) * Math.PI / 180;
+            var x1 = cx + radius * Math.cos(a1), y1 = cy + radius * Math.sin(a1);
+            var x2 = cx + radius * Math.cos(a2), y2 = cy + radius * Math.sin(a2);
+            paths += '<path d="M ' + cx + " " + cy + " L " + x1.toFixed(2) + " " + y1.toFixed(2) +
+              " A " + radius + " " + radius + " 0 " + (sweep > 180 ? 1 : 0) + " 1 " +
+              x2.toFixed(2) + " " + y2.toFixed(2) + ' Z" fill="' + colors[index % colors.length] +
+              '" stroke="#fff" stroke-width="2"/>';
+            angle += sweep;
+          });
+          out += '<svg viewBox="0 0 320 205" role="img" aria-label="Pie chart" style="width:100%;max-width:350px;height:auto;display:block;margin:8px auto;background:#fff;">' +
+            paths + "</svg><div style=\"display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;font-size:11px;\">";
+          graph.data.forEach(function (item, index) {
+            out += '<div><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:' +
+              colors[index % colors.length] + ';margin-right:5px;"></span>' + diEsc(item[nameKey]) +
+              ": " + diEsc(item[valueKey]) + "</div>";
+          });
+          out += "</div>";
+        } else if (graph && (graph.chartType === "bar" || graph.chartType === "line" || graph.chartType === "bar_graph" || graph.chartType === "line_graph") && Array.isArray(graph.data)) {
+          var chartKind = (graph.chartType === "line" || graph.chartType === "line_graph") ? "line" : "bar";
+          var xKey = graph.xKey || "x";
+          var series = graph.series && graph.series[0] ? graph.series[0] : { dataKey: "y" };
+          var yKey = series.dataKey || "y";
+          var vals = graph.data.map(function (item) { return Number(item[yKey] || 0); });
+          var maxVal = Math.max.apply(null, vals.concat([1]));
+          var minVal = Math.min.apply(null, vals.concat([0]));
+          var W = 720, H = 300, left = 48, right = 18, top = 24, bottom = 242;
+          var plotW = W - left - right, plotH = bottom - top;
+          var svg = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' +
+            (chartKind === "bar" ? "Bar graph" : "Line graph") +
+            '" style="width:100%;height:auto;display:block;background:#fff;border:1px solid #e2e8f0;border-radius:8px;margin-top:8px;">';
+          for (var tick = 0; tick <= 4; tick++) {
+            var valueAtTick = minVal + (maxVal - minVal) * tick / 4;
+            var yAtTick = bottom - tick * plotH / 4;
+            svg += '<line x1="' + left + '" y1="' + yAtTick + '" x2="' + (W-right) +
+              '" y2="' + yAtTick + '" stroke="#e2e8f0"/><text x="' + (left-8) + '" y="' +
+              (yAtTick+4) + '" text-anchor="end" font-size="11" fill="#475569">' +
+              valueAtTick.toFixed(0) + "</text>";
+          }
+          var pts = [];
+          graph.data.forEach(function (item, index) {
+            var x = left + (graph.data.length === 1 ? plotW / 2 : index * plotW / (graph.data.length - 1));
+            var y = bottom - ((vals[index] - minVal) / (maxVal - minVal || 1)) * plotH;
+            pts.push([x, y]);
+            if (chartKind === "bar") {
+              var bw = Math.min(54, plotW / Math.max(1, graph.data.length) * 0.55);
+              var zeroY = bottom - ((0 - minVal) / (maxVal - minVal || 1)) * plotH;
+              var barY = Math.min(y, zeroY), barH = Math.max(2, Math.abs(zeroY - y));
+              svg += '<rect x="' + (x-bw/2) + '" y="' + barY + '" width="' + bw +
+                '" height="' + barH + '" rx="3" fill="#3977c3"/>';
+            }
+            svg += '<text x="' + x + '" y="' + (y-8) + '" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a">' +
+              diEsc(vals[index]) + '</text><text x="' + x + '" y="' + (bottom+22) +
+              '" text-anchor="middle" font-size="11" fill="#334155">' + diEsc(item[xKey]) + "</text>";
+          });
+          if (chartKind === "line") {
+            svg += '<polyline points="' + pts.map(function (pt) { return pt[0] + "," + pt[1]; }).join(" ") +
+              '" fill="none" stroke="#d35b48" stroke-width="4" stroke-linejoin="round"/>';
+            pts.forEach(function (pt) { svg += '<circle cx="' + pt[0] + '" cy="' + pt[1] + '" r="5" fill="#d35b48"/>'; });
+          }
+          svg += '<line x1="' + left + '" y1="' + bottom + '" x2="' + (W-right) +
+            '" y2="' + bottom + '" stroke="#334155"/><line x1="' + left + '" y1="' + top +
+            '" x2="' + left + '" y2="' + bottom + '" stroke="#334155"/></svg>';
+          out += svg;
+        }
+
+        return out;
+      }
+
+      /* 5. COMPLETE 30 LEVEL-6 DI QUESTIONS */
+      var DEFAULT_30_QUESTIONS = [
+        // Set 1 (Q1-Q5)
+        { setId: 1, q: { hi: "जोन B और E से प्राप्त कुल राजस्व का, जोन A और D से प्राप्त कुल राजस्व से अनुपात क्या है?", en: "What is the ratio of total revenue from Zone B & E together to that from Zone A & D together?" }, options: ["30 : 19", "25 : 19", "15 : 11", "32 : 21"], correctIndex: 0, exp: { hi: "B+E = (50×300)+(30×500) = 300 लाख; A+D = (40×250)+(45×200) = 190 लाख ⇒ 30 : 19", en: "B+E = 150+150 = 300L; A+D = 100+90 = 190L ⇒ Ratio = 30 : 19" } },
+        { setId: 1, q: { hi: "सभी पांच जोनों को मिलाकर प्रति यात्री भारित औसत किराया (₹ में) कितना है?", en: "What is the weighted average fare (in ₹) per passenger across all five zones combined?" }, options: ["₹310", "₹315", "₹325", "₹330"], correctIndex: 1, exp: { hi: "कुल राजस्व = 630 लाख; कुल यात्री = 200 हजार ⇒ औसत किराया = 63000 ÷ 200 = ₹315", en: "Total revenue = 630L; Total passengers = 200k ⇒ Weighted Avg = ₹315" } },
+        { setId: 1, q: { hi: "जोन C से प्राप्त कुल राजस्व, जोन D के कुल राजस्व से कितने प्रतिशत अधिक है?", en: "Total revenue from Zone C is what percent more than total revenue from Zone D?" }, options: ["50.00%", "52.50%", "55.56%", "60.00%"], correctIndex: 2, exp: { hi: "C = 140 लाख, D = 90 लाख ⇒ अंतर = 50 लाख ⇒ (50/90)×100 = 55.56%", en: "C = 140L, D = 90L ⇒ Diff = 50L ⇒ (50/90)×100 = 55.56%" } },
+        { setId: 1, q: { hi: "यदि अगले दिन जोन A में यात्री 25% बढ़ें और किराया 20% घटे, तो राजस्व में क्या परिवर्तन होगा?", en: "If next day passengers in Zone A increase by 25% and fare decreases by 20%, net % change in revenue is:" }, options: ["0.0% (No change)", "+5.0%", "-5.0%", "+2.5%"], correctIndex: 0, exp: { hi: "+25 - 20 - (25×20)/100 = 0.0% परिवर्तन", en: "+25 - 20 - (500/100) = 0.0% change" } },
+        { setId: 1, q: { hi: "सभी पांच जोनों से प्राप्त औसत राजस्व (लाख ₹ में) कितना है?", en: "What is the average revenue (in ₹ Lakh) across all five zones?" }, options: ["120", "124", "126", "130"], correctIndex: 2, exp: { hi: "कुल राजस्व = 630 लाख ⇒ औसत = 630 ÷ 5 = 126 लाख ₹", en: "Total = 630 Lakh ⇒ Average = 630 ÷ 5 = 126 Lakh" } },
+        // Set 2 (Q6-Q10)
+        { setId: 2, q: { hi: "'विद्युतीकरण' और 'सुरक्षा व सिग्नलिंग' पर आवंटित राशि का अंतर (करोड़ ₹ में) क्या है?", en: "What is the difference (in ₹ Crore) between 'Electrification' and 'Safety & Signalling'?" }, options: ["32,000", "36,000", "40,000", "42,000"], correctIndex: 1, exp: { hi: "(108° - 54°) = 54° ⇒ (54/360) × 2,40,000 = ₹36,000 करोड़", en: "(54°/360°) × 2,40,000 = ₹36,000 Crore" } },
+        { setId: 2, q: { hi: "'यात्री सुविधाएं' का बजट, 'नई रेल लाइनें' के बजट का कितने प्रतिशत है?", en: "Budget for 'Passenger Amenities' is what percent of 'New Railway Lines'?" }, options: ["35%", "40%", "45%", "50%"], correctIndex: 1, exp: { hi: "(36° ÷ 90°) × 100 = 40%", en: "(36° ÷ 90°) × 100 = 40%" } },
+        { setId: 2, q: { hi: "'रोलिंग स्टॉक' और 'यात्री सुविधाएं' पर आवंटित औसत राशि (करोड़ ₹ में) कितनी है?", en: "What is the average amount (in ₹ Crore) allocated to 'Rolling Stock' and 'Amenities' together?" }, options: ["34,000", "36,000", "38,000", "72,000"], correctIndex: 1, exp: { hi: "औसत कोण = (72°+36°)/2 = 54° ⇒ राशि = (54/360)×2,40,000 = ₹36,000 करोड़", en: "Avg angle = 54° ⇒ (54/360)×2,40,000 = ₹36,000 Crore" } },
+        { setId: 2, q: { hi: "यदि 'विद्युतीकरण' का 12.5% भाग 'सुरक्षा' में जोड़ दिया जाए, तो 'सुरक्षा' का नया केंद्रीय कोण क्या होगा?", en: "If 12.5% of 'Electrification' is shifted to 'Safety & Signalling', new central angle of Safety is:" }, options: ["64.5°", "66.0°", "67.5°", "68.5°"], correctIndex: 2, exp: { hi: "54° + (108° का 1/8) = 54° + 13.5° = 67.5°", en: "54° + 13.5° = 67.5°" } },
+        { setId: 2, q: { hi: "(नई लाइनें + रोलिंग स्टॉक) के बजट का शेष तीन मदों के संयुक्त बजट से अनुपात क्या है?", en: "Ratio of (New Lines + Rolling Stock) budget to the remaining three heads combined is:" }, options: ["7 : 9", "8 : 11", "9 : 11", "11 : 9"], correctIndex: 2, exp: { hi: "(90°+72°) : (360°-162°) = 162 : 198 = 9 : 11", en: "162° : 198° = 9 : 11" } },
+        // Set 3 (Q11-Q15)
+        { setId: 3, q: { hi: "किस फैक्ट्री ने अपने लक्ष्य की तुलना में सर्वाधिक प्रतिशत वृद्धि के साथ उत्पादन किया?", en: "Which factory achieved the highest percentage increase in actual production over its target?" }, options: ["Factory P", "Factory Q", "Factory R", "Factory S"], correctIndex: 1, exp: { hi: "फैक्ट्री Q: (150/1000)×100 = +15% (सर्वाधिक)", en: "Factory Q: +15% over target (highest)" } },
+        { setId: 3, q: { hi: "सभी चार फैक्ट्रियों के कुल वास्तविक उत्पादन और कुल लक्ष्य के बीच अंतर कितना है?", en: "What is the difference between total actual and total target production of all 4 factories?" }, options: ["20", "30", "40", "50"], correctIndex: 2, exp: { hi: "कुल वास्तविक = 3940, कुल लक्ष्य = 3900 ⇒ अंतर = 40", en: "Total Actual = 3940, Total Target = 3900 ⇒ Diff = 40" } },
+        { setId: 3, q: { hi: "फैक्ट्री P व R के कुल वास्तविक उत्पादन का, फैक्ट्री Q व S के कुल लक्ष्य से अनुपात क्या है?", en: "Ratio of combined actual production of P & R to combined target of Q & S is:" }, options: ["17 : 19", "18 : 19", "19 : 20", "9 : 10"], correctIndex: 1, exp: { hi: "(720+1080) : (1000+900) = 1800 : 1900 = 18 : 19", en: "1800 : 1900 = 18 : 19" } },
+        { setId: 3, q: { hi: "फैक्ट्री S का वास्तविक उत्पादन, फैक्ट्री P के निर्धारित लक्ष्य से कितने प्रतिशत अधिक है?", en: "Actual production of Factory S is what percent more than target production of Factory P?" }, options: ["21.25%", "22.50%", "23.75%", "25.00%"], correctIndex: 2, exp: { hi: "(990 - 800)/800 × 100 = (190/800)×100 = 23.75%", en: "(190/800)×100 = 23.75%" } },
+        { setId: 3, q: { hi: "यदि 2026 में फैक्ट्री R का वास्तविक उत्पादन 16⅔% बढ़े, तो यह 2025 के लक्ष्य से कितना अधिक होगा?", en: "If R's actual production rises by 16⅔% in 2026, by how much will it exceed its 2025 target?" }, options: ["40", "50", "60", "80"], correctIndex: 2, exp: { hi: "1080 × (7/6) = 1260 ⇒ 1260 - 1200 = 60", en: "1080 × (7/6) - 1200 = 60" } },
+        // Set 4 (Q16-Q20)
+        { setId: 4, q: { hi: "दिए गए 6 वर्षों (2020–2025) में औसत माल ढुलाई (मिलियन टन में) कितनी है?", en: "What is the average freight loading (in MT) over the 6 years (2020–2025)?" }, options: ["1440", "1450", "1460", "1475"], correctIndex: 1, exp: { hi: "कुल = 8700 ⇒ औसत = 8700 ÷ 6 = 1450 MT", en: "Total = 8700 ÷ 6 = 1450 MT" } },
+        { setId: 4, q: { hi: "किस वर्ष में पिछले वर्ष की तुलना में माल ढुलाई में प्रतिशत वृद्धि सर्वाधिक थी?", en: "In which year was the percentage increase over the previous year the highest?" }, options: ["2021", "2022", "2023", "2025"], correctIndex: 1, exp: { hi: "2022 में: (150/1260)×100 = 11.90% (सर्वाधिक)", en: "In 2022: (150/1260)×100 = 11.90% (highest)" } },
+        { setId: 4, q: { hi: "वर्ष 2020 से 2025 तक माल ढुलाई में कुल कितने प्रतिशत की वृद्धि हुई?", en: "What is the overall percentage increase in freight loading from 2020 to 2025?" }, options: ["40.0%", "42.5%", "45.0%", "48.0%"], correctIndex: 2, exp: { hi: "(1740 - 1200)/1200 × 100 = (540/1200)×100 = 45.0%", en: "(540/1200)×100 = 45.0%" } },
+        { setId: 4, q: { hi: "प्रथम 3 वर्षों (2020–22) और अंतिम 3 वर्षों (2023–25) की औसत माल ढुलाई का अंतर क्या है?", en: "Difference between average freight of first 3 years (2020–22) and last 3 years (2023–25) is:" }, options: ["300", "310", "320", "330"], correctIndex: 2, exp: { hi: "1610 - 1290 = 320 MT", en: "1610 - 1290 = 320 MT" } },
+        { setId: 4, q: { hi: "2021 और 2024 की संयुक्त ढुलाई, 2022 और 2025 की संयुक्त ढुलाई का कितने प्रतिशत है?", en: "Combined freight of 2021 & 2024 is what percent of combined freight of 2022 & 2025?" }, options: ["88.50%", "90.48%", "91.25%", "92.40%"], correctIndex: 1, exp: { hi: "(2850 ÷ 3150) × 100 = 90.48%", en: "(2850 ÷ 3150) × 100 = 90.48%" } },
+        // Set 5 (Q21-Q25)
+        { setId: 5, q: { hi: "सभी चार मंडलों में कुल पुरुष और कुल महिला कर्मचारियों की संख्या का अंतर क्या है?", en: "What is the difference between total male and total female employees across all 4 divisions?" }, options: ["2,200", "2,400", "2,500", "2,600"], correctIndex: 1, exp: { hi: "कुल पुरुष = 2500+3200+2800+2700 = 11,200; कुल महिला = 8,800 ⇒ अंतर = 2,400", en: "Total Males = 11,200; Total Females = 8,800 ⇒ Diff = 2,400" } },
+        { setId: 5, q: { hi: "मंडल M₂ में महिला कर्मचारी, मंडल M₃ में पुरुष कर्मचारियों से कितने प्रतिशत कम हैं?", en: "Female employees in M₂ are what percent less than male employees in M₃?" }, options: ["12.50%", "14.29%", "15.00%", "16.67%"], correctIndex: 1, exp: { hi: "(2800 - 2400)/2800 × 100 = (400/2800)×100 = 14.29%", en: "(400/2800)×100 = 14.29%" } },
+        { setId: 5, q: { hi: "यदि M₄ के 20% पुरुष और 25% महिलाएं राजपत्रित (Gazetted) हैं, तो M₄ में अराजपत्रित कर्मचारी कितने हैं?", en: "If 20% males & 25% females in M₄ are Gazetted, how many Non-Gazetted employees are in M₄?" }, options: ["3,840", "3,900", "3,960", "4,020"], correctIndex: 2, exp: { hi: "(2700×0.80) + (2400×0.75) = 2160 + 1800 = 3,960", en: "2160 + 1800 = 3,960" } },
+        { setId: 5, q: { hi: "(M₁ + M₄) की कुल महिला कर्मचारियों का (M₂ + M₃) के कुल पुरुष कर्मचारियों से अनुपात क्या है?", en: "Ratio of total females in (M₁ + M₄) to total males in (M₂ + M₃) is:" }, options: ["11 : 15", "11 : 14", "10 : 13", "12 : 17"], correctIndex: 0, exp: { hi: "(2000+2400) : (3200+2800) = 4400 : 6000 = 11 : 15", en: "4400 : 6000 = 11 : 15" } },
+        { setId: 5, q: { hi: "सभी चार मंडलों के कुल कर्मचारियों में महिला कर्मचारियों का समग्र प्रतिशत क्या है?", en: "What is the overall percentage of female employees across all four divisions combined?" }, options: ["42%", "44%", "45%", "46%"], correctIndex: 1, exp: { hi: "(8,800 ÷ 20,000) × 100 = 44%", en: "(8,800 ÷ 20,000) × 100 = 44%" } },
+        // Set 6 (Q26-Q30)
+        { setId: 6, q: { hi: "जंक्शन पर टिकट खरीदने वाली कुल महिला यात्रियों की संख्या कितनी है?", en: "What is the total number of female passengers who bought tickets at the junction?" }, options: ["1,484", "1,504", "1,524", "1,544"], correctIndex: 2, exp: { hi: "720 (Gen) + 504 (Slp) + 300 (AC) = 1,524", en: "720 + 504 + 300 = 1,524" } },
+        { setId: 6, q: { hi: "स्लीपर श्रेणी के पुरुष यात्रियों और AC श्रेणी के पुरुष यात्रियों का अनुपात क्या है?", en: "What is the ratio of male passengers in Sleeper class to male passengers in AC class?" }, options: ["7 : 4", "8 : 5", "9 : 5", "2 : 1"], correctIndex: 2, exp: { hi: "756 : 420 = 9 : 5", en: "756 : 420 = 9 : 5" } },
+        { setId: 6, q: { hi: "अनारक्षित श्रेणी की महिला यात्रियों और AC श्रेणी की महिला यात्रियों का औसत कितना है?", en: "What is the average of female passengers in General class and AC class?" }, options: ["490", "500", "510", "520"], correctIndex: 2, exp: { hi: "(720 + 300) ÷ 2 = 510", en: "(720 + 300) ÷ 2 = 510" } },
+        { setId: 6, q: { hi: "यदि किराया General=₹150, Sleeper=₹400 व AC=₹1200 है, तो AC राजस्व (Gen+Slp) राजस्व का कितना % है?", en: "If fares are Gen=₹150, Slp=₹400, AC=₹1200, AC revenue is what % of (Gen + Slp) revenue?" }, options: ["112.45%", "115.66%", "118.20%", "120.50%"], correctIndex: 1, exp: { hi: "AC = 8.64 लाख; (Gen+Slp) = 2.43 + 5.04 = 7.47 लाख ⇒ (864/747)×100 = 115.66%", en: "(8,64,000 / 7,47,000) × 100 = 115.66%" } },
+        { setId: 6, q: { hi: "स्लीपर श्रेणी की महिला यात्री, अनारक्षित श्रेणी के पुरुष यात्रियों से कितने प्रतिशत कम हैं?", en: "Female passengers in Sleeper class are what percent less than male passengers in General class?" }, options: ["40.0%", "42.5%", "44.0%", "45.0%"], correctIndex: 2, exp: { hi: "(900 - 504)/900 × 100 = (396/900)×100 = 44.0%", en: "(396/900)×100 = 44.0%" } }
+      ];
+
+      function createDefaultTestRecord() {
+        return {
+          id: "builtin_30_di",
+          mode: "di",
+          isBuiltIn: true,
+          title: {
+            hi: "RRB NTPC लेवल 6 — फुल DI मॉक टेस्ट #1 (30 प्रश्न)",
+            en: "RRB NTPC Level 6 — Full DI Mock Test #1 (30 Qs)"
+          },
+          durationMinutes: 40,
+          questions: DEFAULT_30_QUESTIONS,
+          lastAttempt: null
+        };
+      }
+
+      /* 6. LOAD & SAVE VAULT DATA */
+      function loadVault() {
+        var raw = SafeStorage.get(STORAGE_KEY);
+        if (!raw) {
+          var snap = document.getElementById("vault-snapshot-json");
+          if (snap && snap.textContent && snap.textContent.trim().length > 5) {
+            raw = snap.textContent.trim();
+          }
+        }
+        if (raw) {
+          try {
+            var parsed = JSON.parse(raw);
+            app.pin = parsed.pin || "";
+            app.activeMode = parsed.activeMode === "maths_science" ? "maths_science" : "di";
+            app.pendingAttempt = parsed.pendingAttempt || null;
+            if (Array.isArray(parsed.tests) && parsed.tests.length > 0) {
+              app.tests = parsed.tests;
+              app.tests.forEach(function (test) { if (!test.mode) test.mode = "di"; });
+              return;
+            }
+          } catch (e) {}
+        }
+        app.pin = "";
+        app.tests = [createDefaultTestRecord()];
+        saveVault();
+      }
+
+      function saveVault() {
+        SafeStorage.set(
+          STORAGE_KEY,
+          JSON.stringify({
+            pin: app.pin,
+            activeMode: app.activeMode,
+            tests: app.tests,
+            pendingAttempt: app.pendingAttempt
+          })
+        );
+      }
+
+      /* 7. GLOBAL WINDOW FUNCTIONS (100% Reliable Inline Event Handlers) */
+      window.showScreen = function (screenId) {
+        var screens = ["screen-lock", "screen-dashboard", "screen-exam", "screen-result", "screen-overall"];
+        for (var i = 0; i < screens.length; i++) {
+          var el = document.getElementById(screens[i]);
+          if (el) el.classList.toggle("hidden", screens[i] !== screenId);
+        }
+        var lockBtn = document.getElementById("top-lock-btn");
+        if (lockBtn) lockBtn.classList.toggle("hidden", screenId === "screen-lock");
+        if (screenId === "screen-dashboard") renderDashboard();
+        if (screenId === "screen-lock") renderLockScreen();
+        if (screenId === "screen-overall") renderOverallAnalytics();
+        window.scrollTo(0, 0);
+      };
+
+      /* 7A. THEME PICKER — saved independently from test data */
+      var AVAILABLE_THEMES = ["ocean", "emerald", "violet", "sunset", "rose", "teal"];
+
+      window.toggleThemeMenu = function () {
+        var menu = document.getElementById("theme-menu");
+        var trigger = document.getElementById("theme-trigger");
+        if (!menu) return;
+        var opening = menu.classList.contains("hidden");
+        menu.classList.toggle("hidden", !opening);
+        if (trigger) trigger.setAttribute("aria-expanded", opening ? "true" : "false");
+      };
+
+      window.applyTheme = function (themeName) {
+        var theme = AVAILABLE_THEMES.indexOf(themeName) >= 0 ? themeName : "ocean";
+        document.documentElement.setAttribute("data-theme", theme);
+        SafeStorage.set("rrb_l6_selected_theme", theme);
+
+        var options = document.querySelectorAll(".theme-option");
+        for (var i = 0; i < options.length; i++) {
+          var active = options[i].getAttribute("data-theme-choice") === theme;
+          options[i].classList.toggle("active", active);
+          var check = options[i].querySelector(".theme-option-check");
+          if (check) check.textContent = active ? "✓" : "";
+        }
+
+        var menu = document.getElementById("theme-menu");
+        var trigger = document.getElementById("theme-trigger");
+        if (menu) menu.classList.add("hidden");
+        if (trigger) trigger.setAttribute("aria-expanded", "false");
+        toast(bi("थीम बदल दी गई!", "Theme updated!"));
+      };
+
+      function loadSelectedTheme() {
+        var savedTheme = SafeStorage.get("rrb_l6_selected_theme") || "ocean";
+        window.applyTheme(savedTheme);
+        var menu = document.getElementById("theme-menu");
+        if (menu) menu.classList.add("hidden");
+      }
+
+      document.addEventListener("click", function (event) {
+        var menu = document.getElementById("theme-menu");
+        var trigger = document.getElementById("theme-trigger");
+        if (!menu || menu.classList.contains("hidden")) return;
+        if (!menu.contains(event.target) && trigger && !trigger.contains(event.target)) {
+          menu.classList.add("hidden");
+          trigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          var menu = document.getElementById("theme-menu");
+          var trigger = document.getElementById("theme-trigger");
+          if (menu) menu.classList.add("hidden");
+          if (trigger) trigger.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      window.setLang = function (lang) {
+        app.lang = lang;
+        var btns = document.querySelectorAll(".lang-btn");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].classList.toggle("active", btns[i].getAttribute("data-lang") === lang);
+        }
+        renderLockScreen();
+        renderDashboard();
+        if (!document.getElementById("screen-exam").classList.contains("hidden")) {
+          renderActiveQuestion();
+        }
+        if (!document.getElementById("screen-result").classList.contains("hidden") && app.lastReport) {
+          renderResultView();
+        }
+        if (!document.getElementById("screen-overall").classList.contains("hidden")) {
+          renderOverallAnalytics();
+        }
+      };
+
+      /* 7B. PASSWORD LOCK SCREEN HANDLERS */
+      window.selectVaultMode = function (mode) {
+        app.activeMode = mode === "maths_science" ? "maths_science" : "di";
+        saveVault();
+        renderLockScreen();
+      };
+
+      function renderLockScreen() {
+        var hasPin = Boolean(app.pin && app.pin.length > 0);
+        document.getElementById("lock-title").textContent = bi(
+          "RRB स्टेशन मास्टर वॉल्ट",
+          "RRB Station Master Vault"
+        );
+        document.getElementById("lock-subtitle").textContent = hasPin
+          ? bi("वॉल्ट अनलॉक करने के लिए अपना पासवर्ड दर्ज करें", "Enter your saved password to unlock the vault")
+          : bi("पहली बार उपयोग: नया पासवर्ड सेट करें", "First time setup: Create a password for your vault");
+        document.getElementById("pin-label").textContent = hasPin
+          ? bi("पासवर्ड दर्ज करें:", "Enter Password:")
+          : bi("नया पासवर्ड बनाएं:", "Set New Password:");
+        document.getElementById("unlock-btn-text").textContent = hasPin
+          ? "🔓 " + bi("वॉल्ट खोलें", "Unlock Vault")
+          : "🔐 " + bi("पासवर्ड सेव करें और खोलें", "Save Password & Open");
+        document.getElementById("lock-saved-info").textContent =
+          "📚 " + app.tests.length + " " + bi("टेस्ट सुरक्षित", "Tests Saved");
+        var diBtn = document.getElementById("mode-di-btn");
+        var msBtn = document.getElementById("mode-ms-btn");
+        if (diBtn && msBtn) {
+          diBtn.className = app.activeMode === "di" ? "btn btn-blue" : "btn btn-outline";
+          msBtn.className = app.activeMode === "maths_science" ? "btn btn-blue" : "btn btn-outline";
+        }
+      }
+
+      window.handleUnlock = function () {
+        var inp = document.getElementById("pin-input");
+        var errBox = document.getElementById("lock-err");
+        var val = inp ? inp.value.trim() : "";
+
+        if (!val) {
+          errBox.textContent = bi("कृपया पासवर्ड दर्ज करें!", "Please enter a password!");
+          errBox.classList.remove("hidden");
+          return;
+        }
+
+        if (!app.pin) {
+          app.pin = val;
+          saveVault();
+          errBox.classList.add("hidden");
+          inp.value = "";
+          toast(bi("पासवर्ड सेट हो गया! स्वागत है।", "Password saved! Welcome to your Vault."));
+          window.showScreen("screen-dashboard");
+          return;
+        }
+
+        if (val === app.pin) {
+          errBox.classList.add("hidden");
+          inp.value = "";
+          saveVault();
+          window.showScreen("screen-dashboard");
+        } else {
+          errBox.textContent = bi("गलत पासवर्ड! पुनः प्रयास करें।", "Incorrect password! Please try again.");
+          errBox.classList.remove("hidden");
+        }
+      };
+
+      window.lockVaultNow = function () {
+        if (app.timerRef) {
+          clearInterval(app.timerRef);
+          app.timerRef = null;
+        }
+        window.showScreen("screen-lock");
+      };
+
+      window.resetVaultPin = function () {
+        app.pin = "";
+        saveVault();
+        var errBox = document.getElementById("lock-err");
+        if (errBox) errBox.classList.add("hidden");
+        var inp = document.getElementById("pin-input");
+        if (inp) inp.value = "";
+        renderLockScreen();
+        toast(bi("पासवर्ड रीसेट हो गया! अब नया पासवर्ड सेट करें।", "Password reset! Enter a new password to save."));
+      };
+
+
+      /* GitHub Daily Science feed. Replace USERNAME and REPOSITORY after uploading the starter kit. */
+      window.DAILY_SCIENCE_REMOTE_URL = window.DAILY_SCIENCE_REMOTE_URL ||
+        "https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/data/daily-tests.json";
+      var dailyScienceRemoteLoadedDate = "";
+      var dailyScienceRemoteLoading = false;
+
+      /* Daily Science starter bank: original exam-level practice questions, not claimed as PYQs. */
+      var DAILY_SCIENCE_BANK = [
+        {q:{hi:"विद्युत प्रतिरोध की SI इकाई क्या है?",en:"What is the SI unit of electrical resistance?"},options:["वोल्ट / Volt","ओम / Ohm","एम्पियर / Ampere","वाट / Watt"],correctIndex:1,exp:{hi:"प्रतिरोध की SI इकाई ओम (Ω) है।",en:"The SI unit of resistance is ohm (Ω)."}},
+        {q:{hi:"मानव रक्त का सामान्य pH लगभग कितना होता है?",en:"What is the approximate normal pH of human blood?"},options:["6.4","7.0","7.4","8.2"],correctIndex:2,exp:{hi:"रक्त का सामान्य pH लगभग 7.35–7.45 होता है।",en:"Normal blood pH is approximately 7.35–7.45."}},
+        {q:{hi:"प्रकाश संश्लेषण में पौधे मुख्यतः कौन-सी गैस ग्रहण करते हैं?",en:"Which gas do plants primarily absorb during photosynthesis?"},options:["ऑक्सीजन / Oxygen","कार्बन डाइऑक्साइड / Carbon dioxide","नाइट्रोजन / Nitrogen","हाइड्रोजन / Hydrogen"],correctIndex:1,exp:{hi:"प्रकाश संश्लेषण में पौधे CO₂ और जल से भोजन बनाते हैं।",en:"Plants use CO₂ and water to produce food during photosynthesis."}},
+        {q:{hi:"ध्वनि किस माध्यम में संचरित नहीं हो सकती?",en:"In which medium can sound not travel?"},options:["ठोस / Solid","द्रव / Liquid","गैस / Gas","निर्वात / Vacuum"],correctIndex:3,exp:{hi:"ध्वनि के संचरण के लिए भौतिक माध्यम आवश्यक है।",en:"Sound requires a material medium to propagate."}},
+        {q:{hi:"सोडियम का रासायनिक प्रतीक क्या है?",en:"What is the chemical symbol of sodium?"},options:["So","S","Na","N"],correctIndex:2,exp:{hi:"सोडियम का प्रतीक Na है, जो लैटिन नाम Natrium से आया है।",en:"Sodium is represented by Na, from the Latin name Natrium."}},
+        {q:{hi:"मानव शरीर में इंसुलिन का स्राव किस अंग से होता है?",en:"Which organ secretes insulin in the human body?"},options:["यकृत / Liver","अग्न्याशय / Pancreas","गुर्दा / Kidney","प्लीहा / Spleen"],correctIndex:1,exp:{hi:"अग्न्याशय की बीटा कोशिकाएँ इंसुलिन स्रावित करती हैं।",en:"Beta cells of the pancreas secrete insulin."}},
+        {q:{hi:"किस विटामिन की कमी से रतौंधी हो सकती है?",en:"Deficiency of which vitamin can cause night blindness?"},options:["Vitamin A","Vitamin B₁₂","Vitamin C","Vitamin K"],correctIndex:0,exp:{hi:"विटामिन A की कमी से रतौंधी हो सकती है।",en:"Vitamin A deficiency can cause night blindness."}},
+        {q:{hi:"बल की SI इकाई क्या है?",en:"What is the SI unit of force?"},options:["जूल / Joule","न्यूटन / Newton","पास्कल / Pascal","कूलॉम / Coulomb"],correctIndex:1,exp:{hi:"बल की SI इकाई न्यूटन है।",en:"The SI unit of force is newton."}},
+        {q:{hi:"शुद्ध जल का क्वथनांक सामान्य वायुदाब पर कितना होता है?",en:"What is the boiling point of pure water at normal atmospheric pressure?"},options:["0°C","50°C","100°C","120°C"],correctIndex:2,exp:{hi:"1 वायुमंडलीय दाब पर जल 100°C पर उबलता है।",en:"At 1 atmosphere, water boils at 100°C."}},
+        {q:{hi:"ओजोन परत मुख्यतः वायुमंडल की किस परत में स्थित है?",en:"The ozone layer is mainly located in which atmospheric layer?"},options:["क्षोभमंडल / Troposphere","समतापमंडल / Stratosphere","मध्यमंडल / Mesosphere","तापमंडल / Thermosphere"],correctIndex:1,exp:{hi:"ओजोन की अधिकतम सांद्रता समतापमंडल में होती है।",en:"The highest ozone concentration is in the stratosphere."}},
+        {q:{hi:"मानव हृदय में कुल कितने कक्ष होते हैं?",en:"How many chambers are there in the human heart?"},options:["2","3","4","5"],correctIndex:2,exp:{hi:"मानव हृदय में दो आलिंद और दो निलय होते हैं।",en:"The human heart has two atria and two ventricles."}},
+        {q:{hi:"किस धातु को कमरे के तापमान पर द्रव अवस्था में पाया जाता है?",en:"Which metal is liquid at room temperature?"},options:["लोहा / Iron","पारा / Mercury","एल्युमिनियम / Aluminium","तांबा / Copper"],correctIndex:1,exp:{hi:"पारा सामान्य कमरे के तापमान पर द्रव धातु है।",en:"Mercury is a metal that is liquid at ordinary room temperature."}},
+        {q:{hi:"निकट दृष्टिदोष (Myopia) को ठीक करने के लिए कौन-सा लेंस उपयोग होता है?",en:"Which lens is used to correct myopia?"},options:["उत्तल / Convex","अवतल / Concave","द्विफोकसी / Bifocal","बेलनाकार / Cylindrical"],correctIndex:1,exp:{hi:"मायोपिया को अवतल लेंस से ठीक किया जाता है।",en:"Myopia is corrected using a concave lens."}},
+        {q:{hi:"DNA का पूरा नाम क्या है?",en:"What is the full form of DNA?"},options:["Deoxyribonucleic Acid","Dioxy Nitric Acid","Dynamic Nuclear Atom","Deoxyribose Nitrogen Atom"],correctIndex:0,exp:{hi:"DNA का पूरा नाम Deoxyribonucleic Acid है।",en:"DNA stands for Deoxyribonucleic Acid."}},
+        {q:{hi:"अम्ल नीले लिटमस पत्र को किस रंग में बदलता है?",en:"An acid turns blue litmus paper into which colour?"},options:["हरा / Green","लाल / Red","पीला / Yellow","नीला ही / Remains blue"],correctIndex:1,exp:{hi:"अम्ल नीले लिटमस को लाल कर देता है।",en:"An acid turns blue litmus red."}},
+        {q:{hi:"पौधों में जल का परिवहन मुख्यतः किस ऊतक द्वारा होता है?",en:"Which tissue mainly transports water in plants?"},options:["फ्लोएम / Phloem","जाइलम / Xylem","एपिडर्मिस / Epidermis","कैम्बियम / Cambium"],correctIndex:1,exp:{hi:"जाइलम जड़ों से जल और खनिजों का परिवहन करता है।",en:"Xylem transports water and minerals from roots."}},
+        {q:{hi:"कार्य की SI इकाई क्या है?",en:"What is the SI unit of work?"},options:["वाट / Watt","न्यूटन / Newton","जूल / Joule","एम्पियर / Ampere"],correctIndex:2,exp:{hi:"कार्य की SI इकाई जूल है।",en:"The SI unit of work is joule."}},
+        {q:{hi:"वायुमंडल में सर्वाधिक मात्रा में कौन-सी गैस है?",en:"Which gas is most abundant in Earth's atmosphere?"},options:["ऑक्सीजन / Oxygen","नाइट्रोजन / Nitrogen","कार्बन डाइऑक्साइड / Carbon dioxide","आर्गन / Argon"],correctIndex:1,exp:{hi:"वायुमंडल में लगभग 78% नाइट्रोजन होती है।",en:"Nitrogen makes up about 78% of the atmosphere."}},
+        {q:{hi:"किस कोशिकांग को कोशिका का ऊर्जा गृह कहा जाता है?",en:"Which organelle is called the powerhouse of the cell?"},options:["राइबोसोम / Ribosome","माइटोकॉन्ड्रिया / Mitochondrion","लाइसोसोम / Lysosome","गॉल्जी बॉडी / Golgi body"],correctIndex:1,exp:{hi:"माइटोकॉन्ड्रिया ATP के रूप में ऊर्जा उपलब्ध कराता है।",en:"Mitochondria provide energy in the form of ATP."}},
+        {q:{hi:"बेकिंग सोडा का रासायनिक सूत्र क्या है?",en:"What is the chemical formula of baking soda?"},options:["Na₂CO₃","NaHCO₃","CaCO₃","NaCl"],correctIndex:1,exp:{hi:"बेकिंग सोडा सोडियम हाइड्रोजन कार्बोनेट है: NaHCO₃।",en:"Baking soda is sodium hydrogen carbonate: NaHCO₃."}},
+        {q:{hi:"किस ग्रह का प्राकृतिक उपग्रह नहीं है?",en:"Which planet has no natural satellite?"},options:["मंगल / Mars","बुध / Mercury","शनि / Saturn","पृथ्वी / Earth"],correctIndex:1,exp:{hi:"बुध और शुक्र के कोई प्राकृतिक उपग्रह नहीं हैं।",en:"Mercury and Venus have no natural moons."}},
+        {q:{hi:"रक्त का थक्का जमाने में कौन-सा विटामिन सहायक है?",en:"Which vitamin helps in blood clotting?"},options:["Vitamin A","Vitamin C","Vitamin D","Vitamin K"],correctIndex:3,exp:{hi:"विटामिन K रक्त के थक्के बनने में आवश्यक है।",en:"Vitamin K is essential for normal blood clotting."}},
+        {q:{hi:"विद्युत शक्ति की SI इकाई क्या है?",en:"What is the SI unit of electric power?"},options:["वोल्ट / Volt","वाट / Watt","ओम / Ohm","कूलॉम / Coulomb"],correctIndex:1,exp:{hi:"विद्युत शक्ति की SI इकाई वाट है।",en:"The SI unit of electric power is watt."}},
+        {q:{hi:"किस गैस को सामान्यतः हँसाने वाली गैस कहा जाता है?",en:"Which gas is commonly known as laughing gas?"},options:["NO₂","N₂O","CO","SO₂"],correctIndex:1,exp:{hi:"नाइट्रस ऑक्साइड (N₂O) को हँसाने वाली गैस कहते हैं।",en:"Nitrous oxide (N₂O) is known as laughing gas."}},
+        {q:{hi:"मानव शरीर की सबसे बड़ी ग्रंथि कौन-सी है?",en:"What is the largest gland in the human body?"},options:["अग्न्याशय / Pancreas","थायरॉइड / Thyroid","यकृत / Liver","पीयूष / Pituitary"],correctIndex:2,exp:{hi:"यकृत मानव शरीर की सबसे बड़ी ग्रंथि है।",en:"The liver is the largest gland in the human body."}},
+        {q:{hi:"प्रकाश की चाल निर्वात में लगभग कितनी होती है?",en:"What is the approximate speed of light in vacuum?"},options:["3×10⁶ m/s","3×10⁸ m/s","3×10¹⁰ m/s","3×10⁵ m/s"],correctIndex:1,exp:{hi:"निर्वात में प्रकाश की चाल लगभग 3×10⁸ मीटर/सेकंड है।",en:"The speed of light in vacuum is about 3×10⁸ m/s."}},
+        {q:{hi:"लोहे में जंग लगने के लिए मुख्यतः किनकी आवश्यकता होती है?",en:"What is primarily required for rusting of iron?"},options:["केवल नाइट्रोजन / Nitrogen only","ऑक्सीजन और नमी / Oxygen and moisture","केवल CO₂ / CO₂ only","हाइड्रोजन / Hydrogen"],correctIndex:1,exp:{hi:"जंग लगने के लिए ऑक्सीजन और पानी/नमी आवश्यक हैं।",en:"Rusting requires oxygen and water or moisture."}},
+        {q:{hi:"मानव शरीर में लाल रक्त कोशिकाओं का निर्माण मुख्यतः कहाँ होता है?",en:"Where are red blood cells mainly produced in humans?"},options:["लाल अस्थि मज्जा / Red bone marrow","फेफड़े / Lungs","हृदय / Heart","अग्न्याशय / Pancreas"],correctIndex:0,exp:{hi:"लाल रक्त कोशिकाएँ मुख्यतः लाल अस्थि मज्जा में बनती हैं।",en:"Red blood cells are mainly produced in red bone marrow."}},
+        {q:{hi:"किस अम्ल को 'विटामिन C' भी कहा जाता है?",en:"Which acid is also known as Vitamin C?"},options:["Citric acid","Ascorbic acid","Lactic acid","Acetic acid"],correctIndex:1,exp:{hi:"विटामिन C का रासायनिक नाम एस्कॉर्बिक अम्ल है।",en:"The chemical name of Vitamin C is ascorbic acid."}},
+        {q:{hi:"ऊष्मा का SI मात्रक क्या है?",en:"What is the SI unit of heat?"},options:["कैलोरी / Calorie","जूल / Joule","वाट / Watt","डिग्री / Degree"],correctIndex:1,exp:{hi:"ऊष्मा ऊर्जा का एक रूप है, इसकी SI इकाई जूल है।",en:"Heat is energy; its SI unit is joule."}},
+        {q:{hi:"मानव में निषेचन सामान्यतः कहाँ होता है?",en:"Where does fertilisation usually occur in humans?"},options:["गर्भाशय / Uterus","अंडवाहिनी / Fallopian tube","अंडाशय / Ovary","योनि / Vagina"],correctIndex:1,exp:{hi:"मानव में निषेचन सामान्यतः अंडवाहिनी में होता है।",en:"In humans, fertilisation usually occurs in the fallopian tube."}}
+      ];
+
+      function dailyShuffle(list, seed) {
+        var a = list.slice(); var x = seed >>> 0;
+        for (var i = a.length - 1; i > 0; i--) { x = (x * 1664525 + 1013904223) >>> 0; var j = x % (i + 1); var t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+      }
+
+      function dailyScienceTodayKey() {
+        try {
+          var parts = new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+          var p={}; parts.forEach(function(x){p[x.type]=x.value;});
+          return p.year+'-'+p.month+'-'+p.day;
+        } catch(e) {
+          var d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+        }
+      }
+      function validRemoteQuestion(q) {
+        return !!(q && q.q && q.q.hi && q.q.en && Array.isArray(q.options) &&
+          q.options.length===4 && Number.isInteger(q.correctIndex) &&
+          q.correctIndex>=0 && q.correctIndex<4 && q.exp && q.exp.hi && q.exp.en);
+      }
+      window.refreshDailyScienceFromGitHub = async function(force) {
+        var url = window.DAILY_SCIENCE_REMOTE_URL || "";
+        if (!url || url.indexOf("USERNAME/REPOSITORY") !== -1 || dailyScienceRemoteLoading) return false;
+        var todayKey = dailyScienceTodayKey();
+        if (!force && dailyScienceRemoteLoadedDate === todayKey) return true;
+        dailyScienceRemoteLoading = true;
+        var status = document.getElementById('daily-science-status');
+        var note = document.getElementById('daily-science-source-note');
+        if (status) status.textContent = bi('ऑनलाइन अपडेट जाँच रहे हैं…','CHECKING ONLINE UPDATE…');
+        try {
+          var response = await fetch(url + (url.indexOf('?') >= 0 ? '&' : '?') + 'v=' + Date.now(), {cache:'no-store'});
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          var payload = await response.json();
+          if (!payload || !Array.isArray(payload.tests)) throw new Error('Invalid daily-tests.json format');
+          var remoteTests = payload.tests.filter(function(t) {
+            return t && (t.date === todayKey || payload.date === todayKey) &&
+              Array.isArray(t.questions) && t.questions.length === 30 &&
+              t.questions.every(validRemoteQuestion);
+          });
+          if (remoteTests.length !== 2) throw new Error('Today must contain exactly two 30-question tests');
+          remoteTests.forEach(function(remote, idx) {
+            var n = Number(remote.dailyNumber || idx + 1);
+            var id = 'daily_science_' + todayKey + '_' + n;
+            var local = app.tests.find(function(t){ return t.id === id; });
+            var mapped = {
+              id:id, mode:'maths_science', isBuiltIn:true, dailyScience:true, dailyDate:todayKey,
+              dailyNumber:n, title:remote.title || {hi:'डेली रेलवे साइंस टेस्ट '+n,en:'Daily Railway Science Test '+n},
+              durationMinutes:30, questions:remote.questions, lastAttempt:local ? local.lastAttempt : null,
+              githubUpdatedAt:payload.updatedAt || '', githubVersion:payload.version || 1
+            };
+            if (local) Object.assign(local, mapped); else app.tests.push(mapped);
+          });
+          saveVault();
+          dailyScienceRemoteLoadedDate = todayKey;
+          if (status) status.textContent = bi('GITHUB ONLINE • UPDATED','GITHUB ONLINE • UPDATED');
+          if (note) {
+            var pyqCount = remoteTests.reduce(function(sum,t){return sum+t.questions.filter(function(q){return q.sourceType==='pyq';}).length;},0);
+            var practiceCount = 60 - pyqCount;
+            note.textContent = bi(
+              'GitHub से आज के 2 टेस्ट अपडेट हुए। सत्यापित PYQ: '+pyqCount+' • नए अभ्यास प्रश्न: '+practiceCount+'.',
+              'Today’s two tests synced from GitHub. Verified PYQs: '+pyqCount+' • New practice questions: '+practiceCount+'.'
+            );
+          }
+          return true;
+        } catch(err) {
+          if (status) status.textContent = bi('LOCAL BACKUP • ONLINE उपलब्ध नहीं','LOCAL BACKUP • OFFLINE');
+          if (note) note.textContent = bi(
+            'GitHub अपडेट अभी नहीं मिला। स्थानीय प्रश्नों से टेस्ट उपलब्ध हैं। इंटरनेट/रिपॉजिटरी URL जाँचें।',
+            'GitHub update unavailable. Local fallback questions are available. Check internet/repository URL.'
+          );
+          return false;
+        } finally {
+          dailyScienceRemoteLoading = false;
+        }
+      };
+
+      function ensureDailyScienceTests() {
+        var dateKey = dailyScienceTodayKey();
+        for (var n = 1; n <= 2; n++) {
+          var id = 'daily_science_' + dateKey + '_' + n;
+          var exists = app.tests.some(function(t){ return t.id === id; });
+          if (!exists) {
+            var seed = Number(dateKey.replace(/-/g,'')) + n * 7919;
+            app.tests.push({id:id,mode:'maths_science',isBuiltIn:true,dailyScience:true,dailyDate:dateKey,dailyNumber:n,
+              title:{hi:'डेली रेलवे साइंस टेस्ट '+n+' — '+dateKey,en:'Daily Railway Science Test '+n+' — '+dateKey},
+              durationMinutes:30,questions:dailyShuffle(DAILY_SCIENCE_BANK,seed),lastAttempt:null});
+          }
+        }
+        saveVault();
+        var dateEl=document.getElementById('daily-science-date'); if(dateEl) dateEl.textContent=bi('आज '+dateKey+' के लिए 2 टेस्ट • प्रत्येक में 30 प्रश्न','2 tests for '+dateKey+' • 30 questions each');
+      }
+      window.startDailyScienceTest = function(n) {
+        var key=dailyScienceTodayKey();
+        var id='daily_science_'+key+'_'+n;
+        var test=app.tests.find(function(t){return t.id===id;});
+        if(!test){ensureDailyScienceTests();test=app.tests.find(function(t){return t.id===id;});}
+        if(test) window.promptTimerForTest(test.id);
+      };
+
+      /* 8. DASHBOARD & SCROLLABLE MULTI-TEST LIBRARY */
+      function renderDashboard() {
+        var dailyModule = document.getElementById("daily-science-module");
+        if (dailyModule) {
+          dailyModule.classList.toggle("hidden", app.activeMode !== "maths_science");
+          if (app.activeMode === "maths_science") {
+            ensureDailyScienceTests();
+            window.refreshDailyScienceFromGitHub(false);
+          }
+        }
+        document.getElementById("dash-start-title").textContent = (app.activeMode === "di" ? "📊 " : "➗ ") + bi("टेस्ट शुरू करें", "Start Test");
+        document.getElementById("dash-start-sub").textContent = app.activeMode === "maths_science"
+          ? bi("मैथ्स और साइंस का मॉक टेस्ट शुरू करें (30 प्रश्न • 30 मिनट)", "Start Maths & Science mock test (30 questions • 30 minutes)")
+          : bi("डेटा इंटरप्रिटेशन का मॉक टेस्ट शुरू करें", "Start Data Interpretation mock test");
+        document.getElementById("dash-start-sub").textContent = bi(
+          "कस्टम टाइमर सेट करके तुरंत मॉक टेस्ट शुरू करें",
+          "Set custom timer & launch mock test immediately"
+        );
+        document.getElementById("dash-create-title").textContent = "➕ " + bi("नया टेस्ट बनाएं", "Create New Test");
+        document.getElementById("dash-create-sub").textContent = bi(
+          "फ़ोन से कितने भी प्रश्नों की .JSON अपलोड करें",
+          "Upload .JSON of any question count from phone"
+        );
+        document.getElementById("lib-heading").textContent = "📚 " + bi("सेव किए गए टेस्ट", "Saved Tests Library");
+        document.getElementById("lib-sub").textContent = bi(
+          "अधिक टेस्ट होने पर केवल यह बॉक्स अंदर स्क्रॉल होगा",
+          "Scrolls internally when you add multiple tests"
+        );
+        var visibleTests = app.tests.filter(function (test) { return (test.mode || "di") === app.activeMode; });
+        document.getElementById("lib-count-badge").textContent = visibleTests.length + " " + bi("टेस्ट", "Tests");
+        document.getElementById("app-header-title").textContent = app.activeMode === "di" ? "RRB NTPC L6 DI Vault" : "RRB NTPC L6 Maths & Science";
+
+        document.getElementById("overall-card-sub").textContent = bi(
+          "सभी सेव किए गए टेस्टों का समग्र ग्राफ देखें या नए प्रश्नों का AI प्रॉम्प्ट कॉपी करें।",
+          "View overall analytics graphs across all tests or copy AI prompt."
+        );
+        document.getElementById("btn-overall-view-lbl").textContent = "📊 " + bi(
+          "ओवरऑल व्यू",
+          "Overall View"
+        );
+
+        var html = "";
+        if (app.pendingAttempt && app.pendingAttempt.testId && (app.pendingAttempt.mode || "di") === app.activeMode) {
+          var pendingTest = null;
+          for (var pi = 0; pi < app.tests.length; pi++) { if (app.tests[pi].id === app.pendingAttempt.testId) { pendingTest = app.tests[pi]; break; } }
+          if (pendingTest) {
+            var pendingName = typeof pendingTest.title === "object" ? bi(pendingTest.title.hi, pendingTest.title.en) : String(pendingTest.title);
+            html += '<div class="test-item" style="border:2px solid #f59e0b;background:#fffbeb;">' +
+              '<div style="font-size:13.5px;font-weight:900;color:#92400e;margin-bottom:6px;">⏸ ' + bi("टेस्ट बीच में रुका हुआ है", "Test paused") + '</div>' +
+              '<div style="font-size:12px;font-weight:800;margin-bottom:8px;">' + pendingName + ' · Q ' + (Number(app.pendingAttempt.currentQ || 0) + 1) + '/' + pendingTest.questions.length + ' · ' + fmtTime(Number(app.pendingAttempt.remainingSec || 0)) + ' ' + bi("बाकी", "left") + '</div>' +
+              '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+              '<button type="button" class="btn btn-green btn-sm" style="flex:1;" onclick="window.resumePausedTest()">▶ ' + bi("वहीं से जारी रखें", "Resume where you left off") + '</button>' +
+              '<button type="button" class="btn btn-red-soft btn-sm" onclick="window.discardPausedTest()">' + bi("हटाएँ", "Discard") + '</button></div></div>';
+          } else { app.pendingAttempt = null; saveVault(); }
+        }
+        for (var i = 0; i < visibleTests.length; i++) {
+          var t = visibleTests[i];
+          var tName = typeof t.title === "object" ? bi(t.title.hi, t.title.en) : String(t.title);
+          var qLen = Array.isArray(t.questions) ? t.questions.length : 0;
+          var mins = t.durationMinutes || Math.max(5, Math.ceil((qLen * 4) / 3));
+          var lastHtml = "";
+          var viewResBtn = "";
+          if (t.lastAttempt) {
+            lastHtml =
+              '<div style="background:var(--green-soft);border:1px solid #a7f3d0;color:#065f46;font-size:11.5px;font-weight:800;padding:5px 8px;border-radius:6px;margin-bottom:8px;">' +
+              "📊 " + bi("पिछला स्कोर", "Last Score") + ": " + t.lastAttempt.netScore + " / " + qLen + " (" + t.lastAttempt.acc + "%)" +
+              "</div>";
+            viewResBtn =
+              '<button type="button" class="btn btn-outline btn-sm" onclick="window.viewSavedTestResult(\'' + t.id + '\')">📊 ' +
+              bi("रिजल्ट", "Result") + "</button>";
+          }
+          var delBtn = !t.isBuiltIn
+            ? '<button type="button" class="btn btn-red-soft btn-sm" onclick="window.deleteSavedTest(\'' + t.id + '\')">🗑️</button>'
+            : "";
+
+          html +=
+            '<div class="test-item">' +
+            '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px;">' +
+            '<div style="font-size:13.5px;font-weight:800;color:var(--navy);">' + (i + 1) + ". " + tName + "</div>" +
+            '<span class="chip" style="background:' + (t.isBuiltIn ? "#dbeafe;color:#1e40af" : "#fef3c7;color:#92400e") + ';">' +
+            (t.isBuiltIn ? "Built-in" : "Custom") + "</span></div>" +
+            '<div class="chip-row">' +
+            '<span class="chip">📝 ' + qLen + " " + bi("प्रश्न", "Qs") + "</span>" +
+            '<span class="chip">⏱️ ' + mins + " " + bi("मिनट", "Mins") + "</span>" +
+            '<span class="chip">🎯 +1 / -0.33</span>' +
+            "</div>" +
+            lastHtml +
+            '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+            '<button type="button" class="btn btn-green btn-sm" style="flex:1;" onclick="window.promptTimerForTest(\'' + t.id + '\')">🚀 ' +
+            bi("टेस्ट शुरू करें", "Start Test") + "</button>" +
+            viewResBtn +
+            delBtn +
+            "</div></div>";
+        }
+        document.getElementById("saved-tests-list").innerHTML = html;
+      }
+
+      window.promptTimerAndStart = function () {
+        var matches = app.tests.filter(function (test) { return (test.mode || "di") === app.activeMode; });
+        var latest = matches[matches.length - 1];
+        if (latest) window.promptTimerForTest(latest.id);
+        else toast(bi("इस मोड में पहले JSON टेस्ट अपलोड करें।", "Upload a JSON test in this mode first."));
+      };
+
+      /* PRE-TEST CUSTOM TIMER MODAL */
+      window.promptTimerForTest = function (testId) {
+        app.pendingStartTestId = testId;
+        var t = null;
+        for (var i = 0; i < app.tests.length; i++) {
+          if (app.tests[i].id === testId) {
+            t = app.tests[i];
+            break;
+          }
+        }
+        if (!t) return;
+        var qCount = Array.isArray(t.questions) ? t.questions.length : 0;
+        var defaultMins = t.durationMinutes || Math.max(5, Math.ceil((qCount * 4) / 3));
+        var tName = typeof t.title === "object" ? bi(t.title.hi, t.title.en) : String(t.title);
+
+        document.getElementById("timer-modal-head").textContent = "⏱️ " + bi("टाइमर सेट करें", "Set Custom Timer");
+        document.getElementById("timer-modal-test-title").textContent = tName;
+        document.getElementById("timer-modal-q-info").textContent =
+          "📝 " + bi("कुल प्रश्न: " + qCount, "Total Questions: " + qCount) + " • 🎯 +1 / -0.33";
+        document.getElementById("timer-modal-prompt-lbl").textContent = app.activeMode === "maths_science"
+          ? bi("मैथ्स & साइंस टेस्ट का समय 30 मिनट तय है।", "Maths & Science test duration is fixed at 30 minutes.")
+          : bi("आप यह टेस्ट कितने मिनट में अटेम्प्ट करना चाहेंगे?", "How many minutes would you like to set for this test?");
+
+        var inp = document.getElementById("timer-modal-input");
+        inp.value = app.activeMode === "maths_science" ? 30 : defaultMins;
+        inp.disabled = app.activeMode === "maths_science";
+        highlightQuickTimerChip(Number(inp.value));
+        document.getElementById("modal-timer").classList.remove("hidden");
+      };
+
+      function highlightQuickTimerChip(mins) {
+        var chips = document.querySelectorAll(".timer-chip-btn");
+        for (var i = 0; i < chips.length; i++) {
+          chips[i].classList.toggle("active", chips[i].textContent.indexOf(String(mins)) === 0);
+        }
+      }
+
+      window.setQuickTimerMinutes = function (mins) {
+        document.getElementById("timer-modal-input").value = mins;
+        highlightQuickTimerChip(mins);
+      };
+
+      window.closeTimerModal = function () {
+        document.getElementById("modal-timer").classList.add("hidden");
+      };
+
+      window.confirmTimerAndLaunch = function () {
+        var rawMins = Number(document.getElementById("timer-modal-input").value);
+        var chosenMins = app.activeMode === "maths_science" ? 30 : (rawMins > 0 ? Math.min(300, Math.round(rawMins)) : 40);
+        window.closeTimerModal();
+        if (app.pendingStartTestId) {
+          window.startTestById(app.pendingStartTestId, chosenMins);
+        }
+      };
+
+      window.viewSavedTestResult = function (testId) {
+        for (var i = 0; i < app.tests.length; i++) {
+          var t = app.tests[i];
+          if (t.id === testId && t.lastAttempt && t.lastAttempt.reportSnapshot) {
+            app.activeTestId = t.id;
+            app.lastReport = t.lastAttempt.reportSnapshot;
+            app.solFilter = "all";
+            window.showScreen("screen-result");
+            renderResultView();
+            return;
+          }
+        }
+        window.openOverallScreen();
+      };
+
+      window.deleteSavedTest = function (testId) {
+        app.tests = app.tests.filter(function (t) {
+          return t.id !== testId || t.isBuiltIn;
+        });
+        saveVault();
+        renderDashboard();
+        toast(bi("टेस्ट हटा दिया गया।", "Test removed from library."));
+      };
+
+      /* 9. CREATE / UPLOAD NEW TEST */
+      window.openCreateModal = function () {
+        document.getElementById("create-title-inp").value = "";
+        document.getElementById("create-mins-inp").value = app.activeMode === "maths_science" ? "30" : "40";
+        document.getElementById("create-title-inp").placeholder = app.activeMode === "maths_science"
+          ? "RRB Maths & Science — 30 Questions"
+          : "e.g. RRB Level 6 — DI Practice Set #2";
+        document.getElementById("create-json-box").value = "";
+        document.getElementById("upload-status-text").textContent = bi("फ़ाइल चुनें या नीचे JSON पेस्ट करें", "Select file or paste JSON below");
+        document.getElementById("modal-create").classList.remove("hidden");
+      };
+
+      window.closeCreateModal = function () {
+        document.getElementById("modal-create").classList.add("hidden");
+      };
+
+      window.handleFileUpload = function (ev) {
+        var file = ev.target.files && ev.target.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var txt = e.target.result || "";
+          document.getElementById("create-json-box").value = txt;
+          document.getElementById("upload-status-text").textContent = "✅ Loaded: " + file.name;
+          if (!document.getElementById("create-title-inp").value.trim()) {
+            document.getElementById("create-title-inp").value = file.name.replace(/\.[^/.]+$/, "");
+          }
+        };
+        reader.readAsText(file);
+      };
+
+      window.loadDemoNewTest = function () {
+        var demoQs = [
+          { q: { hi: "ट्रेन A (720 किमी, 9 घंटे) और ट्रेन B (1080 किमी, 12 घंटे) की औसत चाल का अनुपात क्या है?", en: "What is the ratio of average speed of Train A (720 km in 9h) to Train B (1080 km in 12h)?" }, options: ["7 : 8", "8 : 9", "9 : 10", "4 : 5"], correctIndex: 1, exp: { hi: "चाल A = 80, चाल B = 90 ⇒ अनुपात = 8 : 9", en: "Speed A = 80, Speed B = 90 ⇒ 8 : 9" } },
+          { q: { hi: "यदि एक स्टेशन पर 1,500 यात्रियों में से 40% स्लीपर टिकट लेते हैं, तो स्लीपर यात्री कितने हैं?", en: "Out of 1,500 passengers at a station, if 40% buy Sleeper tickets, how many buy Sleeper?" }, options: ["500", "600", "650", "700"], correctIndex: 1, exp: { hi: "1500 × 40% = 600", en: "40% of 1500 = 600" } },
+          { q: { hi: "एक मालगाड़ी 60 किमी/घंटा की चाल से 450 मीटर लंबे प्लेटफॉर्म को 45 सेकंड में पार करती है। ट्रेन की लंबाई क्या है?", en: "A goods train at 60 km/h crosses a 450m platform in 45s. Find train length:" }, options: ["250 m", "300 m", "350 m", "400 m"], correctIndex: 1, exp: { hi: "60×(5/18)×45 = 750m ⇒ 750 - 450 = 300m", en: "Total dist = 750m ⇒ 750 - 450 = 300m" } },
+          { q: { hi: "जोन X का राजस्व ₹120 लाख से बढ़कर ₹150 लाख हो गया। प्रतिशत वृद्धि कितनी है?", en: "Revenue of Zone X increased from ₹120 Lakh to ₹150 Lakh. Percentage increase is:" }, options: ["20%", "25%", "30%", "15%"], correctIndex: 1, exp: { hi: "(30/120)×100 = 25%", en: "(30/120)×100 = 25%" } },
+          { q: { hi: "एक पाई चार्ट में 'सिग्नलिंग' का कोण 72° है। कुल बजट में इसका प्रतिशत हिस्सा क्या है?", en: "In a pie chart, 'Signalling' has a central angle of 72°. What is its % share?" }, options: ["15%", "18%", "20%", "25%"], correctIndex: 2, exp: { hi: "(72°/360°)×100 = 20%", en: "(72/360)×100 = 20%" } },
+          { q: { hi: "मंडल P में 3,600 कर्मचारियों में पुरुष और महिला का अनुपात 5 : 4 है। पुरुषों की संख्या क्या है?", en: "In Division P, out of 3,600 staff, Male:Female ratio is 5:4. Number of males is:" }, options: ["1,600", "1,800", "2,000", "2,200"], correctIndex: 2, exp: { hi: "(5/9)×3600 = 2,000", en: "(5/9)×3600 = 2,000" } },
+          { q: { hi: "4 स्टेशनों पर टिकट बिक्री 400, 520, 680 और 600 है। औसत बिक्री कितनी है?", en: "Ticket sales at 4 stations are 400, 520, 680, and 600. Find average sales:" }, options: ["525", "550", "575", "600"], correctIndex: 1, exp: { hi: "2200 ÷ 4 = 550", en: "2200 ÷ 4 = 550" } },
+          { q: { hi: "यदि किराया 10% बढ़ाया जाए और फिर 10% घटाया जाए, तो कुल परिवर्तन कितना होगा?", en: "If fare is increased by 10% and then decreased by 10%, net % change is:" }, options: ["0%", "-1%", "+1%", "-2%"], correctIndex: 1, exp: { hi: "+10 - 10 - (100/100) = -1%", en: "-1% net change" } },
+          { q: { hi: "दो ट्रेनों की चाल का अनुपात 4 : 5 है। समान दूरी तय करने में उनके समय का अनुपात क्या होगा?", en: "Speeds of two trains are in ratio 4 : 5. Ratio of time taken to cover same distance is:" }, options: ["4 : 5", "5 : 4", "16 : 25", "25 : 16"], correctIndex: 1, exp: { hi: "समय का अनुपात = 5 : 4", en: "Time ratio = 5 : 4" } },
+          { q: { hi: "एक कोच फैक्ट्री का लक्ष्य 500 कोच था और वास्तविक उत्पादन 575 कोच रहा। लक्ष्य से कितने % अधिक उत्पादन हुआ?", en: "Target of a factory was 500 coaches and actual was 575. What % above target is it?" }, options: ["12%", "15%", "18%", "20%"], correctIndex: 1, exp: { hi: "(75/500)×100 = 15%", en: "(75/500)×100 = 15%" } }
+        ];
+        var newTest = {
+          id: "custom_" + Date.now(),
+          mode: app.activeMode,
+          isBuiltIn: false,
+          title: {
+            hi: (app.activeMode === "maths_science" ? "मैथ्स एवं साइंस डेमो टेस्ट #" : "रेलवे DI एवं क्वांट डेमो टेस्ट #") + (app.tests.length + 1) + " (10 प्रश्न)",
+            en: (app.activeMode === "maths_science" ? "Maths & Science Demo Test #" : "Railway DI & Quant Demo Test #") + (app.tests.length + 1) + " (10 Qs)"
+          },
+          durationMinutes: app.activeMode === "maths_science" ? 30 : 12,
+          questions: demoQs,
+          lastAttempt: null
+        };
+        app.tests.push(newTest);
+        saveVault();
+        window.closeCreateModal();
+        renderDashboard();
+        toast(bi("नया 10-प्रश्न टेस्ट लाइब्रेरी में जुड़ गया!", "New 10-Q test added to your library!"));
+      };
+
+      window.saveNewTestFromInput = function () {
+        var raw = document.getElementById("create-json-box").value.trim();
+        if (!raw) {
+          toast(bi("कृपया JSON पेस्ट करें या ऊपर पीला डेमो बटन दबाएं!", "Please paste JSON or tap the gold Demo button!"));
+          return;
+        }
+        try {
+          var parsed = JSON.parse(raw);
+          var arr = Array.isArray(parsed) ? parsed : (parsed.questions || parsed.answeredQuestions || parsed.items || []);
+          if (!Array.isArray(arr) || arr.length === 0) {
+            throw new Error("No questions array found");
+          }
+          if (app.activeMode === "maths_science" && arr.length !== 30) {
+            throw new Error(bi("Maths & Science मोड में ठीक 30 प्रश्नों की JSON अपलोड करें। अभी " + arr.length + " प्रश्न हैं।", "Maths & Science mode requires exactly 30 questions. This file has " + arr.length + "."));
+          }
+          var normQs = [];
+          var diSetMap = {};
+          // Accept both supported layouts: per-question diSet (usually on the
+          // first question of a set) and a top-level diSets array/object.
+          if (parsed && Array.isArray(parsed.diSets)) {
+            parsed.diSets.forEach(function (set) {
+              if (set && set.setId != null) diSetMap[String(set.setId)] = set;
+            });
+          } else if (parsed && parsed.diSets && typeof parsed.diSets === "object") {
+            Object.keys(parsed.diSets).forEach(function (key) {
+              var set = parsed.diSets[key];
+              if (set) diSetMap[String(set.setId != null ? set.setId : key)] = set;
+            });
+          }
+          for (var m = 0; m < arr.length; m++) {
+            if (arr[m] && arr[m].diSet && arr[m].setId != null) {
+              diSetMap[String(arr[m].setId)] = arr[m].diSet;
+            }
+          }
+          for (var i = 0; i < arr.length; i++) {
+            var it = arr[i];
+            var qText = it.q || it.question || ("Question " + (i + 1));
+            var qObj = typeof qText === "object" ? qText : { hi: String(qText), en: String(qText) };
+            var opts = Array.isArray(it.options) && it.options.length >= 4
+              ? it.options.slice(0, 4).map(function (o) { return typeof o === "object" ? o : String(o); })
+              : [String(it.correctAnswer || "Option A"), "Option B", "Option C", "Option D"];
+            var cIdx = typeof it.correctIndex === "number" ? it.correctIndex : 0;
+            var expText = it.exp || it.explanation || "Solution verified.";
+            var expObj = typeof expText === "object" ? expText : { hi: String(expText), en: String(expText) };
+            var normalizedSetId = it.setId != null ? String(it.setId) : (it.diSet && it.diSet.setId != null ? String(it.diSet.setId) : null);
+            var linkedDiSet = it.diSet || (normalizedSetId != null ? diSetMap[normalizedSetId] : null) || null;
+            if (typeof cIdx !== "number" || cIdx < 0 || cIdx > 3 || Math.floor(cIdx) !== cIdx) cIdx = 0;
+            normQs.push({
+              setId: normalizedSetId,
+              diSet: linkedDiSet,
+              passage: it.passage || null,
+              q: qObj,
+              options: opts,
+              correctIndex: cIdx,
+              exp: expObj
+            });
+          }
+
+          var tTitle = document.getElementById("create-title-inp").value.trim()
+            || (parsed.title ? String(parsed.title.en || parsed.title) : ("Custom RRB Test #" + (app.tests.length + 1) + " (" + normQs.length + " Qs)"));
+          var rawMinsInp = Number(document.getElementById("create-mins-inp").value);
+          var tMins = rawMinsInp > 0 ? rawMinsInp : (app.activeMode === "maths_science" ? 30 : Math.max(5, Math.ceil((normQs.length * 4) / 3)));
+
+          app.tests.push({
+            id: "custom_" + Date.now(),
+            mode: app.activeMode,
+            isBuiltIn: false,
+            title: { hi: tTitle, en: tTitle },
+            durationMinutes: tMins,
+            questions: normQs,
+            lastAttempt: null
+          });
+          saveVault();
+          window.closeCreateModal();
+          renderDashboard();
+          toast(bi("नया टेस्ट (" + normQs.length + " प्रश्न) सेव हो गया!", "New test (" + normQs.length + " Qs) saved to library!"));
+        } catch (e) {
+          toast("JSON Error: " + e.message);
+        }
+      };
+
+      /* 10. LIVE CBT EXAM ENGINE */
+      function getActiveTest() {
+        for (var i = 0; i < app.tests.length; i++) {
+          if (app.tests[i].id === app.activeTestId) return app.tests[i];
+        }
+        return app.tests[0];
+      }
+
+      window.startTestById = function (testId, customMinutes) {
+        app.activeTestId = testId;
+        var t = getActiveTest();
+        if (!t) return;
+
+        var qCount = t.questions.length;
+        var activeMins = customMinutes && customMinutes > 0
+          ? customMinutes
+          : (t.durationMinutes || Math.max(5, Math.ceil((qCount * 4) / 3)));
+
+        t.durationMinutes = activeMins;
+        saveVault();
+
+        app.pendingAttempt = null;
+        app.currentQ = 0;
+        app.diCollapsed = false;
+        app.totalSec = activeMins * 60;
+        app.remainingSec = app.totalSec;
+        app.responses = [];
+        for (var i = 0; i < qCount; i++) {
+          app.responses.push({ sel: null, rev: false, visited: i === 0 });
+        }
+
+        window.showScreen("screen-exam");
+        renderSetTabs(t);
+        renderActiveQuestion();
+        startExamTimer();
+      };
+
+      function savePausedAttempt() {
+        app.pendingAttempt = {
+          testId: app.activeTestId, mode: (getActiveTest() && getActiveTest().mode) || app.activeMode, currentQ: app.currentQ, remainingSec: app.remainingSec,
+          totalSec: app.totalSec, responses: app.responses, diCollapsed: app.diCollapsed,
+          savedAt: Date.now()
+        };
+        saveVault();
+      }
+
+      window.pauseAndExitTest = function () {
+        if (!app.responses || !app.responses.length) return;
+        var modal = document.getElementById("modal-pause-exit");
+        if (!modal) return;
+        document.getElementById("pause-confirm-title").textContent = bi("टेस्ट पॉज करके बाहर जाएँ?", "Pause and exit this test?");
+        document.getElementById("pause-confirm-copy").textContent = bi(
+          "क्या आप अभी टेस्ट से बाहर जाना चाहते हैं? आप बाद में इसी जगह से दोबारा शुरू कर सकते हैं।",
+          "Do you want to leave the test now? You can continue later from exactly where you stopped."
+        );
+        document.getElementById("pause-save-note-text").textContent = bi(
+          "आपका बचा हुआ समय और सभी दिए गए उत्तर सुरक्षित सेव रहेंगे।",
+          "Your remaining time and all your answers will be safely saved."
+        );
+        modal.classList.remove("hidden");
+      };
+
+      window.closePauseExitModal = function () {
+        var modal = document.getElementById("modal-pause-exit");
+        if (modal) modal.classList.add("hidden");
+      };
+
+      window.confirmPauseAndExit = function () {
+        if (!app.responses || !app.responses.length) {
+          window.closePauseExitModal();
+          return;
+        }
+        window.closePauseExitModal();
+        if (app.timerRef) { clearInterval(app.timerRef); app.timerRef = null; }
+        savePausedAttempt();
+        window.showScreen("screen-dashboard");
+        toast(bi("टेस्ट सेव हो गया। आप बाद में वहीं से जारी रख सकते हैं।", "Test saved. You can resume from where you left off."));
+      };
+
+      window.resumePausedTest = function () {
+        var draft = app.pendingAttempt;
+        if (!draft) return;
+        var found = false;
+        for (var i = 0; i < app.tests.length; i++) if (app.tests[i].id === draft.testId) { found = true; break; }
+        if (!found) { app.pendingAttempt = null; saveVault(); renderDashboard(); return; }
+        app.activeTestId = draft.testId;
+        var t = getActiveTest();
+        app.currentQ = Math.min(Math.max(0, Number(draft.currentQ) || 0), t.questions.length - 1);
+        app.totalSec = Number(draft.totalSec) || ((t.durationMinutes || 40) * 60);
+        app.remainingSec = Math.max(0, Number(draft.remainingSec) || 0);
+        app.responses = Array.isArray(draft.responses) && draft.responses.length === t.questions.length ? draft.responses : t.questions.map(function (_, ix) { return { sel: null, rev: false, visited: ix === app.currentQ }; });
+        app.diCollapsed = Boolean(draft.diCollapsed);
+        app.pendingAttempt = null;
+        saveVault();
+        window.showScreen("screen-exam");
+        renderSetTabs(t);
+        renderActiveQuestion();
+        if (app.remainingSec <= 0) { window.submitTestNow(); return; }
+        startExamTimer();
+      };
+
+      window.discardPausedTest = function () {
+        if (!window.confirm(bi("रुका हुआ टेस्ट और उसके उत्तर हटाएँ?", "Discard the paused test and its saved answers?"))) return;
+        app.pendingAttempt = null; saveVault(); renderDashboard();
+      };
+
+      function startExamTimer() {
+        if (app.timerRef) clearInterval(app.timerRef);
+        updateTimerUI();
+        app.timerRef = setInterval(function () {
+          app.remainingSec--;
+          if (app.remainingSec <= 0) {
+            app.remainingSec = 0;
+            updateTimerUI();
+            clearInterval(app.timerRef);
+            app.timerRef = null;
+            window.submitTestNow();
+          } else {
+            updateTimerUI();
+          }
+        }, 1000);
+      }
+
+      function fmtTime(sec) {
+        var s = Math.max(0, sec);
+        var m = Math.floor(s / 60);
+        var r = s % 60;
+        return (m < 10 ? "0" : "") + m + ":" + (r < 10 ? "0" : "") + r;
+      }
+
+      function updateTimerUI() {
+        var pill = document.getElementById("exam-timer-pill");
+        if (!pill) return;
+        pill.textContent = fmtTime(app.remainingSec);
+        pill.className = "timer-pill tabular-nums";
+        if (app.remainingSec <= 300) pill.className += " crit";
+        else if (app.remainingSec <= 600) pill.className += " warn";
+      }
+
+      function renderSetTabs(t) {
+        var tabsEl = document.getElementById("exam-set-tabs");
+        var groups = [];
+        var seen = {};
+        for (var i = 0; i < t.questions.length; i++) {
+          var sid = t.questions[i].setId;
+          if (sid == null || sid === "") continue;
+          var key = String(sid);
+          if (!seen[key]) {
+            seen[key] = true;
+            groups.push({ key: key, firstIndex: i });
+          }
+        }
+        if (groups.length <= 1) {
+          tabsEl.classList.add("hidden");
+          return;
+        }
+        tabsEl.classList.remove("hidden");
+        var html = "";
+        groups.forEach(function (group, index) {
+          html += '<button type="button" class="set-tab-btn" id="set-tab-' + index +
+            '" data-set-id="' + diEsc(group.key) + '" onclick="window.jumpToQ(' + group.firstIndex + ')">Set ' + diEsc(group.key) + "</button>";
+        });
+        tabsEl.innerHTML = html;
+      }
+
+      function renderActiveQuestion() {
+        var t = getActiveTest();
+        var qIdx = app.currentQ;
+        var q = t.questions[qIdx];
+        var resp = app.responses[qIdx];
+        resp.visited = true;
+
+        document.getElementById("exam-q-badge").textContent = "Q " + (qIdx + 1) + "/" + t.questions.length;
+
+        // Highlight the active imported/built-in DI set tab.
+        var setButtons = document.querySelectorAll("#exam-set-tabs .set-tab-btn");
+        for (var s = 0; s < setButtons.length; s++) {
+          var buttonSetId = setButtons[s].getAttribute("data-set-id");
+          setButtons[s].classList.toggle("active", q.setId != null && buttonSetId === String(q.setId));
+        }
+
+        // Render built-in or imported DI data set.
+        var diBox = document.getElementById("exam-di-container");
+        var diBody = document.getElementById("exam-di-body");
+        if (q.setId != null && q.setId !== "" && q.diSet) {
+          diBox.classList.remove("hidden");
+          document.getElementById("exam-di-title").textContent = "📊 DI Set " + q.setId;
+          diBody.innerHTML = renderImportedDiSet(q.diSet);
+          diBody.classList.toggle("hidden", app.diCollapsed);
+        } else if (q.setId != null && t.id === "builtin_30_di") {
+          diBox.classList.remove("hidden");
+          document.getElementById("exam-di-title").textContent = "📊 DI Set " + q.setId;
+          diBody.innerHTML = renderSetVisual(Number(q.setId));
+          diBody.classList.toggle("hidden", app.diCollapsed);
+        } else if (q.passage) {
+          diBox.classList.remove("hidden");
+          document.getElementById("exam-di-title").textContent = "📊 Data / Passage";
+          var pObj = typeof q.passage === "object" ? biBlock(q.passage.hi, q.passage.en) : String(q.passage);
+          diBody.innerHTML = '<div style="font-size:12.5px;">' + pObj + "</div>";
+          diBody.classList.toggle("hidden", app.diCollapsed);
+        } else {
+          diBox.classList.add("hidden");
+        }
+
+        // Render Question Stem with transparent PYQ / Practice provenance.
+        var sourceBadge = "";
+        if (q.sourceType === "pyq") {
+          var pyqMeta = [q.exam || "RRB", q.year || "", q.sourceNote || ""].filter(Boolean).join(" · ");
+          sourceBadge = '<div style="display:inline-flex;align-items:center;gap:6px;margin:0 0 9px;padding:5px 9px;border-radius:999px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);color:#059669;font-size:10px;font-weight:900;">✓ VERIFIED PYQ' +
+            (pyqMeta ? ' · ' + diEsc(pyqMeta) : '') + '</div><br>';
+        } else if (q.sourceType === "practice") {
+          sourceBadge = '<div style="display:inline-flex;align-items:center;gap:6px;margin:0 0 9px;padding:5px 9px;border-radius:999px;background:rgba(59,130,246,.10);border:1px solid rgba(59,130,246,.22);color:#2563eb;font-size:10px;font-weight:900;">✦ EXAM-LEVEL PRACTICE</div><br>';
+        }
+        document.getElementById("exam-q-stem").innerHTML =
+          sourceBadge + "Q" + (qIdx + 1) + ". " + biBlock(q.q.hi, q.q.en);
+
+        // Render Options
+        var letters = ["A", "B", "C", "D"];
+        var optHtml = "";
+        for (var o = 0; o < q.options.length; o++) {
+          var optVal = q.options[o];
+          var optText = typeof optVal === "object" ? bi(optVal.hi, optVal.en) : String(optVal);
+          var isSel = resp.sel === o;
+          optHtml +=
+            '<button type="button" class="opt-btn ' + (isSel ? "selected" : "") + '" onclick="window.selectOption(' + o + ')">' +
+            '<span class="opt-circle">' + letters[o] + "</span>" +
+            '<span class="opt-label">' + optText + "</span>" +
+            "</button>";
+        }
+        document.getElementById("exam-options-box").innerHTML = optHtml;
+
+        document.getElementById("btn-prev-q").disabled = qIdx === 0;
+        window.scrollTo(0, 0);
+        updateAnsweredCount();
+      }
+
+      function updateAnsweredCount() {
+        var ans = 0, notAns = 0, rev = 0, unv = 0;
+        var gridHtml = "";
+        for (var i = 0; i < app.responses.length; i++) {
+          var r = app.responses[i];
+          var cls = "pal-cell";
+          if (r.rev) {
+            rev++;
+            cls += " rev";
+          } else if (r.sel !== null) {
+            ans++;
+            cls += " ans";
+          } else if (r.visited) {
+            notAns++;
+            cls += " not-ans";
+          } else {
+            unv++;
+          }
+          if (i === app.currentQ) cls += " curr";
+          gridHtml += '<button type="button" class="' + cls + '" onclick="window.jumpToQ(' + i + ')">' + (i + 1) + "</button>";
+        }
+        document.getElementById("answered-count-lbl").textContent = ans + "/" + app.responses.length;
+        document.getElementById("pal-cnt-ans").textContent = ans;
+        document.getElementById("pal-cnt-not").textContent = notAns;
+        document.getElementById("pal-cnt-rev").textContent = rev;
+        document.getElementById("pal-cnt-unv").textContent = unv;
+        document.getElementById("palette-buttons-grid").innerHTML = gridHtml;
+      }
+
+      window.toggleDiBox = function () {
+        app.diCollapsed = !app.diCollapsed;
+        document.getElementById("exam-di-body").classList.toggle("hidden", app.diCollapsed);
+      };
+
+      window.selectOption = function (optIdx) {
+        app.responses[app.currentQ].sel = optIdx;
+        if (app.timerRef) savePausedAttempt();
+        renderActiveQuestion();
+      };
+
+      window.clearResponse = function () {
+        app.responses[app.currentQ].sel = null;
+        app.responses[app.currentQ].rev = false;
+        if (app.timerRef) savePausedAttempt();
+        renderActiveQuestion();
+      };
+
+      window.toggleReview = function () {
+        app.responses[app.currentQ].rev = !app.responses[app.currentQ].rev;
+        if (app.timerRef) savePausedAttempt();
+        window.nextQ();
+      };
+
+      window.prevQ = function () {
+        if (app.currentQ > 0) {
+          app.currentQ--;
+          if (app.timerRef) savePausedAttempt();
+          renderActiveQuestion();
+        }
+      };
+
+      window.nextQ = function () {
+        var t = getActiveTest();
+        if (app.currentQ < t.questions.length - 1) {
+          app.currentQ++;
+          if (app.timerRef) savePausedAttempt();
+          renderActiveQuestion();
+        } else {
+          renderActiveQuestion();
+          window.confirmSubmitTest();
+        }
+      };
+
+      window.jumpToQ = function (idx) {
+        app.currentQ = idx;
+        if (app.timerRef) savePausedAttempt();
+        window.togglePaletteDrawer(false);
+        renderActiveQuestion();
+      };
+
+      window.togglePaletteDrawer = function (show) {
+        updateAnsweredCount();
+        document.getElementById("modal-palette").classList.toggle("hidden", !show);
+      };
+
+      window.confirmSubmitTest = function () {
+        var ans = 0;
+        for (var i = 0; i < app.responses.length; i++) {
+          if (app.responses[i].sel !== null) ans++;
+        }
+        var total = app.responses.length;
+        document.getElementById("submit-summary-text").textContent = bi(
+          "आपने " + total + " में से " + ans + " प्रश्नों के उत्तर दिए हैं। क्या आप टेस्ट सबमिट करना चाहते हैं?",
+          "You have answered " + ans + " out of " + total + " questions. Submit test now?"
+        );
+        document.getElementById("modal-submit").classList.remove("hidden");
+      };
+
+      /* 11. SUBMIT & SCORECARD */
+      window.submitTestNow = function () {
+        document.getElementById("modal-submit").classList.add("hidden");
+        app.pendingAttempt = null;
+        if (app.timerRef) {
+          clearInterval(app.timerRef);
+          app.timerRef = null;
+        }
+
+        var t = getActiveTest();
+        var correct = 0, wrong = 0, skip = 0;
+        var details = [];
+
+        for (var i = 0; i < t.questions.length; i++) {
+          var q = t.questions[i];
+          var sel = app.responses[i].sel;
+          var status = "skip";
+          if (sel === null) {
+            skip++;
+          } else if (sel === q.correctIndex) {
+            correct++;
+            status = "correct";
+          } else {
+            wrong++;
+            status = "wrong";
+          }
+          details.push({ q: q, idx: i, sel: sel, status: status });
+        }
+
+        var neg = wrong * (1 / 3);
+        var netVal = correct - neg;
+        var net = netVal.toFixed(2);
+        var att = correct + wrong;
+        var acc = att > 0 ? ((correct / att) * 100).toFixed(1) : "0.0";
+        var spent = app.totalSec - app.remainingSec;
+        var totalQ = t.questions.length;
+        var scorePct = totalQ > 0 ? Math.max(0, (netVal / totalQ) * 100).toFixed(1) : "0.0";
+
+        var reportObj = {
+          testTitle: t.title,
+          totalQ: totalQ,
+          net: net,
+          scorePct: scorePct,
+          neg: neg.toFixed(2),
+          correct: correct,
+          wrong: wrong,
+          skip: skip,
+          acc: acc,
+          spent: spent,
+          dateStr: new Date().toLocaleDateString(),
+          details: details
+        };
+
+        t.lastAttempt = {
+          netScore: net,
+          scorePct: Number(scorePct),
+          acc: Number(acc),
+          correct: correct,
+          wrong: wrong,
+          skip: skip,
+          totalQ: totalQ,
+          spentSec: spent,
+          dateStr: reportObj.dateStr,
+          reportSnapshot: reportObj
+        };
+        saveVault();
+
+        app.lastReport = reportObj;
+        app.solFilter = "all";
+        window.showScreen("screen-result");
+        renderResultView();
+      };
+
+      function renderResultView() {
+        var r = app.lastReport;
+        if (!r) return;
+        document.getElementById("res-test-name").textContent = bi(r.testTitle.hi, r.testTitle.en);
+        document.getElementById("res-net-score").textContent = r.net + " / " + r.totalQ;
+        document.getElementById("res-marks-sub").textContent =
+          "✓ +" + r.correct + " | ✕ -" + r.neg + " | ○ Skip: " + r.skip;
+        document.getElementById("res-acc-val").textContent = r.acc + "%";
+        document.getElementById("res-time-sub").textContent =
+          "⏱️ Time: " + fmtTime(r.spent);
+
+        document.getElementById("flt-btn-all").textContent = "All (" + r.totalQ + ")";
+        document.getElementById("flt-btn-wrong").textContent = "Wrong (" + r.wrong + ")";
+        document.getElementById("flt-btn-skip").textContent = "Skip (" + r.skip + ")";
+        document.getElementById("flt-btn-correct").textContent = "Correct (" + r.correct + ")";
+
+        var letters = ["A", "B", "C", "D"];
+        var html = "";
+        for (var i = 0; i < r.details.length; i++) {
+          var d = r.details[i];
+          if (app.solFilter !== "all" && d.status !== app.solFilter) continue;
+
+          var badgeCol = d.status === "correct"
+            ? "background:#d1fae5;color:#065f46;"
+            : d.status === "wrong"
+              ? "background:#fee2e2;color:#991b1b;"
+              : "background:#e2e8f0;color:#334155;";
+
+          var uAns = d.sel !== null ? letters[d.sel] + ") " + d.q.options[d.sel] : bi("छोड़ा गया", "Skipped");
+          var cAns = letters[d.q.correctIndex] + ") " + d.q.options[d.q.correctIndex];
+
+          html +=
+            '<div style="border-top:1px solid #e2e8f0;padding:10px 0;">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">' +
+            '<span style="font-weight:900;font-size:12.5px;color:var(--navy);">Q' + (d.idx + 1) + "</span>" +
+            '<span style="font-size:11px;font-weight:800;padding:2px 7px;border-radius:5px;' + badgeCol + '">' +
+            d.status.toUpperCase() + "</span></div>" +
+            '<div style="font-size:13px;font-weight:700;margin-bottom:6px;">' + biBlock(d.q.q.hi, d.q.q.en) + "</div>" +
+            '<div style="font-size:12px;margin-bottom:4px;"><strong>Your Answer:</strong> ' + uAns + " | <strong style='color:var(--green);'>Correct:</strong> " + cAns + "</div>" +
+            '<div style="background:var(--gold-soft);border:1px solid #fde68a;padding:7px 9px;border-radius:7px;font-size:12px;color:#78350f;">' +
+            "<strong>💡 Solution:</strong> " + biBlock(d.q.exp.hi, d.q.exp.en) + "</div></div>";
+        }
+        document.getElementById("res-solutions-list").innerHTML = html || '<p style="font-size:12px;color:#64748b;">No questions in this filter.</p>';
+      }
+
+      window.filterSolutions = function (flt) {
+        app.solFilter = flt;
+        renderResultView();
+      };
+
+      window.reattemptCurrentTest = function () {
+        window.promptTimerForTest(app.activeTestId);
+      };
+
+      /* 12. OVERALL ANALYTICS VIEW SCREEN & VISUAL SVG CHARTS */
+      window.openOverallScreen = function () {
+        window.showScreen("screen-overall");
+      };
+
+      function renderOverallAnalytics() {
+        document.getElementById("overall-header-title").textContent = "📊 " + bi(
+          "ओवरऑल परफॉरमेंस ग्राफ (Overall View)",
+          "Overall Performance Analytics"
+        );
+
+        var attemptedTests = [];
+        var totalCorrect = 0, totalWrong = 0, totalSkip = 0, totalSpentSec = 0;
+        var sumScorePct = 0, bestScorePct = 0;
+
+        for (var i = 0; i < app.tests.length; i++) {
+          var t = app.tests[i];
+          if (t.lastAttempt) {
+            var la = t.lastAttempt;
+            var qLen = la.totalQ || t.questions.length || 1;
+            var sPct = la.scorePct !== undefined
+              ? Number(la.scorePct)
+              : Math.max(0, (Number(la.netScore) / qLen) * 100);
+            var aPct = Number(la.acc) || 0;
+
+            attemptedTests.push({
+              index: i + 1,
+              id: t.id,
+              shortLabel: "T" + (i + 1),
+              title: typeof t.title === "object" ? bi(t.title.hi, t.title.en) : String(t.title),
+              qLen: qLen,
+              netScore: la.netScore,
+              scorePct: Number(sPct.toFixed(1)),
+              accPct: Number(aPct.toFixed(1)),
+              correct: la.correct || 0,
+              wrong: la.wrong || 0,
+              skip: la.skip || 0,
+              spentSec: la.spentSec || 0,
+              dateStr: la.dateStr || "Completed"
+            });
+
+            totalCorrect += (la.correct || 0);
+            totalWrong += (la.wrong || 0);
+            totalSkip += (la.skip || 0);
+            totalSpentSec += (la.spentSec || 0);
+            sumScorePct += sPct;
+            if (sPct > bestScorePct) bestScorePct = sPct;
+          }
+        }
+
+        var attCount = attemptedTests.length;
+        var avgScorePct = attCount > 0 ? (sumScorePct / attCount).toFixed(1) : "0.0";
+        var totalAnswered = totalCorrect + totalWrong;
+        var overallAcc = totalAnswered > 0 ? ((totalCorrect / totalAnswered) * 100).toFixed(1) : "0.0";
+        var avgTimeSec = attCount > 0 ? Math.round(totalSpentSec / attCount) : 0;
+
+        document.getElementById("ov-kpi1-lbl").textContent = bi("अटेम्प्ट किए गए टेस्ट", "Tests Attempted");
+        document.getElementById("ov-kpi1-val").textContent = attCount + " / " + app.tests.length;
+        document.getElementById("ov-kpi1-sub").textContent = bi("कुल सेव टेस्ट: " + app.tests.length, "Total in Library: " + app.tests.length);
+
+        document.getElementById("ov-kpi2-lbl").textContent = bi("औसत स्कोर %", "Average Score %");
+        document.getElementById("ov-kpi2-val").textContent = avgScorePct + "%";
+        document.getElementById("ov-kpi2-sub").textContent = bi("सर्वश्रेष्ठ: " + bestScorePct.toFixed(1) + "%", "Best: " + bestScorePct.toFixed(1) + "%");
+
+        document.getElementById("ov-kpi3-lbl").textContent = bi("कुल सटीकता (Accuracy)", "Overall Accuracy");
+        document.getElementById("ov-kpi3-val").textContent = overallAcc + "%";
+        document.getElementById("ov-kpi3-sub").textContent = "✓ " + totalCorrect + " | ✕ " + totalWrong + " | ○ " + totalSkip;
+
+        document.getElementById("ov-kpi4-lbl").textContent = bi("औसत समय", "Avg Time Taken");
+        document.getElementById("ov-kpi4-val").textContent = fmtTime(avgTimeSec);
+        document.getElementById("ov-kpi4-sub").textContent = bi("प्रति अटेम्प्टेड टेस्ट", "Per attempted test");
+
+        // If no tests attempted yet, show friendly call-to-action
+        if (attCount === 0) {
+          var emptyMsg =
+            '<div style="text-align:center;padding:18px 10px;background:#f8fafc;border-radius:10px;border:1px dashed #cbd5e1;">' +
+            '<div style="font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:4px;">' +
+            bi("अभी तक कोई टेस्ट सबमिट नहीं किया गया है!", "No tests attempted yet!") +
+            "</div>" +
+            '<p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;">' +
+            bi("जैसे ही आप कोई टेस्ट सबमिट करेंगे, यहाँ सभी टेस्टों का तुलनात्मक बार ग्राफ और प्रोग्रेस चार्ट अपने आप बन जाएगा।", "Complete at least 1 test to unlock your visual bar graphs, accuracy trend lines, and question breakdown.") +
+            "</p>" +
+            '<button type="button" class="btn btn-green btn-sm" onclick="window.showScreen(\'screen-dashboard\'); window.promptTimerAndStart();">' +
+            "🚀 " + bi("पहला टेस्ट शुरू करें", "Start Your First Test") +
+            "</button></div>";
+
+          document.getElementById("ov-bar-chart-box").innerHTML = emptyMsg;
+          document.getElementById("ov-line-chart-box").innerHTML = emptyMsg;
+          document.getElementById("ov-doughnut-box").innerHTML = emptyMsg;
+          document.getElementById("ov-history-table-box").innerHTML = emptyMsg;
+          return;
+        }
+
+        // 1. RENDER BAR CHART: Test-wise Score %
+        var barSvg = '<line x1="30" y1="145" x2="310" y2="145" stroke="#64748b" stroke-width="1.5"/>';
+        var gridLines = [0, 25, 50, 75, 100];
+        for (var g = 0; g < gridLines.length; g++) {
+          var gy = 145 - (gridLines[g] / 100) * 110;
+          barSvg +=
+            '<line x1="30" y1="' + gy.toFixed(1) + '" x2="310" y2="' + gy.toFixed(1) + '" stroke="#e2e8f0" stroke-width="1"/>' +
+            '<text x="26" y="' + (gy + 3).toFixed(1) + '" font-size="8.5" font-weight="700" fill="#64748b" text-anchor="end">' + gridLines[g] + "%</text>";
+        }
+
+        var maxBars = Math.min(attemptedTests.length, 8);
+        var recentBars = attemptedTests.slice(-maxBars);
+        var slotW = 270 / maxBars;
+        var barW = Math.min(28, Math.max(14, slotW * 0.56));
+
+        for (var b = 0; b < recentBars.length; b++) {
+          var item = recentBars[b];
+          var bx = 35 + b * slotW + (slotW - barW) / 2;
+          var bh = Math.max(3, (item.scorePct / 100) * 110);
+          var by = 145 - bh;
+          barSvg +=
+            '<rect x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + bh.toFixed(1) + '" rx="3" fill="#1d4ed8"/>' +
+            '<text x="' + (bx + barW / 2).toFixed(1) + '" y="' + (by - 4).toFixed(1) + '" font-size="8.5" font-weight="800" fill="#0f294a" text-anchor="middle">' + item.scorePct + '%</text>' +
+            '<text x="' + (bx + barW / 2).toFixed(1) + '" y="160" font-size="9.5" font-weight="800" fill="#334155" text-anchor="middle">' + item.shortLabel + "</text>";
+        }
+
+        document.getElementById("ov-bar-chart-box").innerHTML =
+          '<svg viewBox="0 0 320 170" style="width:100%;max-width:360px;height:auto;display:block;margin:0 auto;">' +
+          barSvg + "</svg>";
+
+        // 2. RENDER LINE GRAPH: Accuracy % (Green) & Score % (Blue) Progression
+        var lineSvg = '<line x1="30" y1="145" x2="310" y2="145" stroke="#64748b" stroke-width="1.5"/>';
+        for (var lg = 0; lg < gridLines.length; lg++) {
+          var lgy = 145 - (gridLines[lg] / 100) * 110;
+          lineSvg +=
+            '<line x1="30" y1="' + lgy.toFixed(1) + '" x2="310" y2="' + lgy.toFixed(1) + '" stroke="#f1f5f9" stroke-width="1"/>' +
+            '<text x="26" y="' + (lgy + 3).toFixed(1) + '" font-size="8.5" font-weight="700" fill="#64748b" text-anchor="end">' + gridLines[lg] + "%</text>";
+        }
+
+        var accPts = [], scorePts = "", lineNodes = "";
+        var countPts = recentBars.length;
+        for (var p = 0; p < countPts; p++) {
+          var ptItem = recentBars[p];
+          var px = countPts === 1 ? 170 : 45 + (p * 250) / (countPts - 1);
+          var accY = 145 - (ptItem.accPct / 100) * 110;
+          var scrY = 145 - (ptItem.scorePct / 100) * 110;
+          accPts.push(px.toFixed(1) + "," + accY.toFixed(1));
+          scorePts += (p === 0 ? "" : " ") + px.toFixed(1) + "," + scrY.toFixed(1);
+
+          lineNodes +=
+            '<circle cx="' + px.toFixed(1) + '" cy="' + accY.toFixed(1) + '" r="4" fill="#059669" stroke="#fff" stroke-width="1.5"/>' +
+            '<text x="' + px.toFixed(1) + '" y="' + (accY - 6).toFixed(1) + '" font-size="8.5" font-weight="800" fill="#065f46" text-anchor="middle">' + ptItem.accPct + "%</text>" +
+            '<circle cx="' + px.toFixed(1) + '" cy="' + scrY.toFixed(1) + '" r="3.5" fill="#1d4ed8" stroke="#fff" stroke-width="1.2"/>' +
+            '<text x="' + px.toFixed(1) + '" y="160" font-size="9.5" font-weight="800" fill="#334155" text-anchor="middle">' + ptItem.shortLabel + "</text>";
+        }
+
+        document.getElementById("ov-line-chart-box").innerHTML =
+          '<svg viewBox="0 0 320 172" style="width:100%;max-width:360px;height:auto;display:block;margin:0 auto;">' +
+          '<text x="165" y="14" font-size="9" font-weight="800" fill="#334155" text-anchor="middle">● Accuracy % (Green)   ● Score % (Blue)</text>' +
+          lineSvg +
+          (countPts > 1 ? '<polyline fill="none" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="4,3" points="' + scorePts + '"/>' : "") +
+          (countPts > 1 ? '<polyline fill="none" stroke="#059669" stroke-width="2.5" points="' + accPts.join(" ") + '"/>' : "") +
+          lineNodes + "</svg>";
+
+        // 3. RENDER HORIZONTAL STACKED BAR & BREAKDOWN: Correct vs Wrong vs Skipped
+        var grandTotalQ = Math.max(1, totalCorrect + totalWrong + totalSkip);
+        var cPct = ((totalCorrect / grandTotalQ) * 100).toFixed(1);
+        var wPct = ((totalWrong / grandTotalQ) * 100).toFixed(1);
+        var sPctVal = ((totalSkip / grandTotalQ) * 100).toFixed(1);
+
+        document.getElementById("ov-doughnut-box").innerHTML =
+          '<div style="height:20px;width:100%;background:#e2e8f0;border-radius:10px;overflow:hidden;display:flex;margin-bottom:8px;">' +
+          '<div style="width:' + cPct + '%;background:#059669;" title="Correct"></div>' +
+          '<div style="width:' + wPct + '%;background:#dc2626;" title="Wrong"></div>' +
+          '<div style="width:' + sPctVal + '%;background:#94a3b8;" title="Skipped"></div>' +
+          "</div>" +
+          '<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;text-align:center;font-size:11.5px;font-weight:800;">' +
+          '<div style="background:var(--green-soft);color:#065f46;padding:6px 4px;border-radius:7px;">✓ ' + bi("सही", "Correct") + "<br>" + totalCorrect + " (" + cPct + "%)</div>" +
+          '<div style="background:var(--red-soft);color:#991b1b;padding:6px 4px;border-radius:7px;">✕ ' + bi("गलत", "Wrong") + "<br>" + totalWrong + " (" + wPct + "%)</div>" +
+          '<div style="background:#f1f5f9;color:#334155;padding:6px 4px;border-radius:7px;">○ ' + bi("छोड़े", "Skipped") + "<br>" + totalSkip + " (" + sPctVal + "%)</div>" +
+          "</div>";
+
+        // 4. RENDER SUMMARY TABLE OF ALL TESTS
+        var tblRows = "";
+        for (var rIdx = 0; rIdx < attemptedTests.length; rIdx++) {
+          var row = attemptedTests[rIdx];
+          tblRows +=
+            "<tr>" +
+            "<td style='text-align:left;'><strong>" + row.shortLabel + ":</strong> " + row.title + "</td>" +
+            "<td>" + row.netScore + " / " + row.qLen + "</td>" +
+            "<td style='color:var(--blue);font-weight:800;'>" + row.scorePct + "%</td>" +
+            "<td style='color:var(--green);font-weight:800;'>" + row.accPct + "%</td>" +
+            "<td>" + fmtTime(row.spentSec) + "</td>" +
+            "</tr>";
+        }
+
+        document.getElementById("ov-history-table-box").innerHTML =
+          '<table class="di-table"><thead><tr>' +
+          "<th style='width:38%;'>" + bi("टेस्ट", "Test") + "</th>" +
+          "<th>" + bi("स्कोर", "Score") + "</th>" +
+          "<th>%</th>" +
+          "<th>" + bi("सटीकता", "Acc%") + "</th>" +
+          "<th>" + bi("समय", "Time") + "</th>" +
+          "</tr></thead><tbody>" + tblRows + "</tbody></table>";
+      }
+
+      /* 13. AI PROMPT COPY UTILITY */
+      window.copyAiPrompt = function () {
+        var p;
+        if (app.activeMode === "maths_science") {
+          p = 'Generate exactly 30 RRB NTPC Level 6 (Station Master) Maths & General Science questions in JSON format: 20 Mathematics questions and 10 General Science questions. Keep the level moderate to difficult and exam-oriented. Cover arithmetic, algebra, geometry, mensuration, number system, percentage, ratio, time-work, time-distance, profit-loss, basic physics, chemistry and biology. Do NOT generate Data Interpretation sets, tables, charts, graphs or DI questions. Return only a valid JSON array, with every question in this exact format: [{"q":{"hi":"प्रश्न हिंदी में","en":"Question in English"},"options":["A","B","C","D"],"correctIndex":0,"exp":{"hi":"सही उत्तर का चरणबद्ध हल/व्याख्या हिंदी में","en":"Step-by-step solution/explanation in English"}}]. Each question must have exactly four options, correctIndex must be 0-3, and explanations must clearly justify the correct answer. Do not include markdown or text outside the JSON array.';
+        } else {
+          p = 'Generate RRB NTPC Level 6 (Station Master) Data Interpretation (DI) questions in JSON format (any number of questions). Use challenging exam-level tables, bar graphs, line graphs, pie charts or caselets where appropriate. Include the required data set with each group so the DI chart/table can be rendered. Do NOT generate standalone Maths & Science questions. Return only a valid JSON array, with each question in this format: [{"q":{"hi":"...","en":"..."},"options":["A","B","C","D"],"correctIndex":0,"exp":{"hi":"...","en":"..."}}]. Each question must have exactly four options, correctIndex must be 0-3, and explanations must show the calculation clearly. Do not include markdown or text outside the JSON array.';
+        }
+        var ta = document.createElement("textarea");
+        ta.value = p;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+        toast(bi("इस मोड का AI प्रॉम्प्ट कॉपी हो गया!", "AI prompt for this mode copied!"));
+      };
+
+      /* INITIALIZE ON LOAD */
+      loadVault();
+      loadSelectedTheme();
+      renderLockScreen();
+      renderDashboard();
+    })();
+  </script>
+</body>
+</html>
